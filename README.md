@@ -4,13 +4,8 @@
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
-Muchos de los estilos han salido de las muchas sesiones de pair programming que [Ward Bell](http://twitter.com/wardbell) y yo hemos tenido. Aunque no siempre coincidimos, mi amigo Ward me ha ayudado con la última evolución de esta guía.
-
 ## Mira los estilos en la aplicación de ejemplo
-Mientras que esta guía explica el *qué*, *por qué* y *cómo*, me resulta útil verlos en práctica. Esta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones. La puedes encontrar en [aplicación de ejemplo (llamada modular) aquí](https://github.com/johnpapa/ng-demos) dentro del directorio `modular`. Siéntete libre de cogerla, hacerle clone o un fork. [Instrucciones de cómo arrancarla en su readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
-
-## Traducciones
-[Traducciones de esta guía de estilos Angular](https://github.com/johnpapa/angularjs-styleguide/tree/master/i18n) son mantenidas por la comunidad y las puedes encontrar aquí.
+Esta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones. La puedes encontrar en ....
 
 ## Tabla de contenidos
 
