@@ -30,7 +30,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [JSHint](#js-hint)
   1. [Constantes](#constantes)
   1. [Plantillas y Snippets](#plantillas-y-snippets)
-  1. [Generador de Yeoman](#generador-de-yeoman)
   1. [Ruteo](#ruteo)
   1. [Automatización de Tareas](#automatización-de-tareas)
   1. [Angular Docs](#angularjs-docs)
@@ -2049,33 +2048,7 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Generador de Yeoman
-###### [Style [Y260](#style-y260)]
-
-Puedes usar el [generador de yeoman HotTowel](http://jpapa.me/yohottowel) para crear una aplicación que te sirve como punto de inicio en Angular que sigue esta guía de estilos.
-
-1. Instala generator-hottowel
-
-  ```
-  npm install -g generator-hottowel
-  ```
-
-2. Crea un nuevo directorio y entra en el
-
-  ```
-  mkdir myapp
-  cd myapp
-  ```
-
-3. Corre el generador
-
-  ```
-  yo hottowel helloWorld
-  ```
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Enrutamiento
+## Ruteo
 Enrutamiento del lado del Cliente es importante para crear un flujo de navegación entre vistas y vistas de composición que están hechas de muchas pequeñas plantillas y directivas.
 
 ###### [Style [Y270](#style-y270)]
