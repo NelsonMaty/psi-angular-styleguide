@@ -1540,29 +1540,13 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Sufijo para el Nombre del Controlador
 ###### [Style [Y124](#style-y124)]
 
-  - Agrega el sufijo `Controller` al nombre del controlador o déjalo sin
-    sufijo. Escoge 1, no uses ambos.
+  - Agrega el sufijo `Controller` al nombre del controlador.
 
     *¿Por qué?*: El sufijo `Controller` es usado más comúnmente y es más descriptivo explícitamente.
 
-    *¿Por qué?*: Omitir el sufijo es más breve y el controlador es fácilmente identificable más seguido incluso sin el sufijo.
-
     ```javascript
     /**
-     * recomendado: Opción 1
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('Avengers', Avengers);
-
-    function Avengers() { }
-    ```
-
-    ```javascript
-    /**
-     * recomendado: Opción 2
+     * recomendado
      */
 
     // avengers.controller.js
