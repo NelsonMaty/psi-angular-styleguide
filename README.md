@@ -361,23 +361,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   var vm = this;
   ```
 
-  Nota: Cuando crees watchers en un controlador usando `controller as`, puedes observar la variable `vm.*` usando la siguiente sintaxis.(Crea los watchers con precaución ya que añaden mucha carga al ciclo de digest)
-
-  ```html
-  <input ng-model="vm.title"/>
-  ```
-
-  ```javascript
-  function SomeController($scope, $log) {
-      var vm = this;
-      vm.title = 'Some Title';
-
-      $scope.$watch('vm.title', function(current, original) {
-          $log.info('vm.title was %s', original);
-          $log.info('vm.title is now %s', current);
-      });
-  }
-  ```
 
 ### Miembros Bindeables Arriba
 ###### [Style [Y033](#style-y033)]
