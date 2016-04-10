@@ -20,7 +20,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Minificación y Anotación](#minificación-y-anotación)
-  1. [Manejo de Excepciones](#manejo-de-excepciones)
   1. [Cómo Nombrar](#cómo-nombrar)
   1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
   1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
