@@ -1514,18 +1514,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     avenger-profile.directive.js
     avenger-profile.directive.spec.js
     ```
-
-  Nota: Otra convención común es nombrar archivos de controladores sin la palabra `controller` en el archivo tal como `avengers.js` en lugar de `avengers.controller.js`. Todas las demás convenciones todavía usan un sufijo del tipo. Los Controladores son el tipo más común de componente así que esto nos ahorra escribir y aún es fácilmente identificable. Yo recomiendo que elijas 1 convención y seas consistente  dentro de tu equipo.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-    // Controladores
-    avengers.js
-    avengers.spec.js
-    ```
-
+    
 ### Nombres de Archivos de Prueba
 ###### [Style [Y122](#style-y122)]
 
