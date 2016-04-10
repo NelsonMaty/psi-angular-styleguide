@@ -1672,20 +1672,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 ## Estructura de la Aplicación
 
-### Pautas Universales
-###### [Style [Y150](#style-y150)]
-
-  - Ten una visión de implementación de corto y largo plazo. En otras palabras, empieza con poco pero ten en mente hacia donde se dirige la aplicación. Todo el código de la aplicación va en el directorio raíz llamado `app`. Todo el contenido es separado en 1 característica por archivo. Cada controlador, servicio, módulo, vista tiene su propio archivo. Todos los vendor scripts de terceros son almacenados en otro directorio raíz y no en el directorio `app`. Si yo no lo escribí no los quiero saturando mi aplicación (`bower_components`, `scripts`, `lib`).
-
-    Nota: Encuentra más detalles y el razonamiento detrás de esta estructura en [este post original sobre la estructura de una aplicación](http://www.johnpapa.net/angular-app-structuring-guidelines/).
-
-### Layout
-###### [Style [Y151](#style-y151)]
-
-  - Coloca los componentes que definen el layout universal de la aplicación en un directorio llamado `layout`. Estos pueden incluir una vista caparazón y un controlador que actúen como un contenedor para la aplicación, navegación, menús, áreas de contenido, y otras regiones.
-
-    *¿Por qué?*: Organiza todo el layout en un lugar único reusado a lo largo de la aplicación.
-
 ### Estructura de Carpetas-por-Característica
 ###### [Style [Y152](#style-y152)]
 
