@@ -1,0 +1,40 @@
+<md-content class="md-padding background-gray " layout="row" layout-align='space-around start '>
+  <div layout="row" flex='45' layout-wrap >
+    <h1 flex='100' class="md-display-1">Para hacer</h1>
+    <md-card ng-repeat="task in vm.toDos | filter: !!isDone" flex="auto" ng-style="{'background-color' : task.color}">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{task.titulo}}</span>
+          <span class="md-subhead">{{task.descripcion}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.editToDo(task)">Editar</md-button>
+        <md-button ng-click="vm.markAsDone(task)">Hecho</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+  <div layout="row" flex='45' layout-wrap>
+    <h1 flex='100' class="md-display-1">Hechas</h1>
+    <md-card ng-repeat="task in vm.toDos | filter: !isDone" flex="auto" ng-style="{'background-color' : task.color}">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{task.titulo}}</span>
+          <span class="md-subhead">{{task.descripcion}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Editar</md-button>
+        <md-button>Deshacer</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+
+  <md-button class="md-fab floating-button" aria-label="Crear tarea" ui-sref='new'>
+      <md-tooltip md-direction="left">
+          Crear tarea
+        </md-tooltip>
+      <md-icon md-font-set="material-icons">create</md-icon>
+  </md-button>
+
+</md-content>

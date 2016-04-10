@@ -1,0 +1,36 @@
+{
+  "name": "Clase3",
+  "version": "1.0.0",
+  "description": "Ejercicio de la clase 3",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NelsonMaty/AgileHubClase3.git"
+  },
+  "keywords": [
+    "AgileHub",
+    "Javascript",
+    "AngularJS"
+  ],
+  "author": "Nelson Ríos",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/NelsonMaty/AgileHubClase3/issues"
+  },
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^3.2.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-open": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}

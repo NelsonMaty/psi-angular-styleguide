@@ -1,0 +1,29 @@
+{
+  "name": "Clase3",
+  "description": "Ejercicio de la clase 3",
+  "main": "index.html",
+  "authors": [
+    "Nelson Ríos"
+  ],
+  "license": "GNU",
+  "keywords": [
+    "AgileHub",
+    "Javascript",
+    "AngularJS"
+  ],
+  "homepage": "https://github.com/NelsonMaty/AgileHubClase3",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
+    "angular-material": "^1.0.7",
+    "animate.css": "^3.5.1"
+  }
+}
