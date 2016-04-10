@@ -1514,25 +1514,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     avenger-profile.directive.js
     avenger-profile.directive.spec.js
     ```
-    
-### Nombres de Archivos de Prueba
-###### [Style [Y122](#style-y122)]
-
-  - Nombra especificaciones de pruebas de manera similar a la del componente que están probando con un sufijo de `spec`.
-
-    *¿Por qué?*: Provee de una manera consistente de identificar componentes rápidamente.
-
-    *¿Por qué?*: Provee de un patrón de coincidencia para [karma](http://karma-runner.github.io/) u otros test runners.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-    avengers.controller.spec.js
-    logger.service.spec.js
-    avengers.routes.spec.js
-    avenger-profile.directive.spec.js
-    ```
 
 ### Nombres de Controladores
 ###### [Style [Y123](#style-y123)]
