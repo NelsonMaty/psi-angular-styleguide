@@ -5,7 +5,7 @@
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones de uso y, lo más importante, el porqué.
 
 ## Mira los estilos en la aplicación de ejemplo
-Esta guía viene acompañada de una aplicación de ejemplo que sigue los estilos y patrones.
+Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y patrones.
 
 ## Tabla de contenidos
 
