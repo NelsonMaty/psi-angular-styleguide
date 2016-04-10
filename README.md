@@ -1722,49 +1722,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
             session-detail.html
             session-detail.controller.js
     ```
-
-      ![Sample App Structure](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-2.png)
-
       Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
-
-    ```javascript
-    /*
-    * evita
-    * Alternativa directorios-por-tipo
-    * Yo recomiendo "directorios-por-característica", en su lugar.
-    */
-
-    app/
-        app.module.js
-        app.config.js
-        app.routes.js
-        controllers/
-            attendees.js
-            session-detail.js
-            sessions.js
-            shell.js
-            speakers.js
-            speaker-detail.js
-            topnav.js
-        directives/
-            calendar.directive.js
-            calendar.directive.html
-            user-profile.directive.js
-            user-profile.directive.html
-        services/
-            dataservice.j
-            localstorage.js
-            logger.js
-            spinner.js
-        views/
-            attendees.html
-            session-detail.html
-            sessions.html
-            shell.html
-            speakers.html
-            speaker-detail.html
-            topnav.html
-    ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
