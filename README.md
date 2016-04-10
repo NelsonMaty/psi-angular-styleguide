@@ -1357,36 +1357,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
         }
     }
     ```
-
-### Identifica Manualmente Dependencias del Route Resolver
-###### [Style [Y092](#style-y092)]
-
-  - Usa $inject para identificar manualmente las dependencias de tu route resolver para componentes de AngularJS.
-
-    *¿Por qué?*: Esta técnica separa la función anónima para el route resolver, haciendola más fácil de leer.
-
-    *¿Por qué?*: Una declaración `$inject` puede ser fácilmente preceder al route resolver para hacer cualquier minificación de dependencias segura.
-
-    ```javascript
-    /* recomendado */
-    function config($routeProvider) {
-        $routeProvider
-            .when('/avengers', {
-                templateUrl: 'avengers.html',
-                controller: 'Avengers',
-                controllerAs: 'vm',
-                resolve: {
-                    moviesPrepService: moviePrepService
-                }
-            });
-    }
-
-    moviePrepService.$inject = ['movieService'];
-    function moviePrepService(movieService) {
-        return movieService.getMovies();
-    }
-    ```
-
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Minificación y Anotación
