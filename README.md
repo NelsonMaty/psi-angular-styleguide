@@ -2023,31 +2023,29 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
     ngmodule // crea un módulo de Angular
     ```
 
-### Visual Studio
-###### [Style [Y251](#style-y251)]
+### Atom
+###### [Style [Y253](#style-y253)]
 
-  - Plantillas de Angular que siguen estos estilos y directrices pueden ser encontrados en [SideWaffle](http://www.sidewaffle.com)
+  - Angular snippets that follow these styles and guidelines.
+    ```
+    apm install angularjs-styleguide-snippets
+    ```
+    or
+    - Open Atom, then open the Package Manager (Packages -> Settings View -> Install Packages/Themes)
+    - Search for the package 'angularjs-styleguide-snippets'
+    - Click 'Install' to install the package
 
-    - Descarga la extensión [SideWaffle](http://www.sidewaffle.com) de Visual Studio (archivo vsix)
-    - Corre el archivo vsix
-    - Reinicia Visual Studio
-
-### WebStorm
-###### [Style [Y252](#style-y252)]
-
-  - Snippets y arhicos de Angular que siguen estos estilos y directrices. Puedes importarlos en tus configuraciones de WebStorm:
-
-    - Descarga los [snippets y plantillas de Angular para WebStorm](assets/webstorm-angular-file-template.settings.jar?raw=true)
-    - Abre WebStorm y ve al menú `File`
-    - Elije la opción `Import Settings`
-    - Selecciona el archivo y da click en `OK`
-    - En un archivo de JavaScript escribe estos comandos seguidos de un `TAB`:
+  - In a JavaScript file type these commands followed by a `TAB`
 
     ```javascript
-    ng-c // crea un controlador de Angular
-    ng-f // crea una factory de Angular
-    ng-m // crea un módulo de Angular
+    ngcontroller // creates an Angular controller
+    ngdirective // creates an Angular directive
+    ngfactory // creates an Angular factory
+    ngmodule // creates an Angular module
+    ngservice // creates an Angular service
+    ngfilter // creates an Angular filter
     ```
+
 
 **[Volver arriba](#tabla-de-contenidos)**
 
