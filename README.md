@@ -1370,8 +1370,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: [`ng-min`](https://github.com/btford/ngmin) está obsoleto
 
-    >Yo prefiero Gulp porque siento que es más fácil de escribir, leer, y debugear.
-
     El siguiente código no está usando minificación de dependencias segura.
 
     ```javascript
@@ -1415,28 +1413,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     ```
 
     Nota: Si `ng-annotate` detecta que la inyección ya ha sido hecha (e.g. `@ngInject` fué detectado), no duplicará el código de `$inject`.
-
-    Nota: Al usar un route resolver puedes prefijar a la función del resolver con `/* @ngInject */` y producirá código propiamente anotado, manteniendo cualquier inyección de dependencias segura para ser minificada.
-
-    ```javascript
-    // Using @ngInject annotations
-    function config($routeProvider) {
-        $routeProvider
-            .when('/avengers', {
-                templateUrl: 'avengers.html',
-                controller: 'Avengers',
-                controllerAs: 'vm',
-                resolve: { /* @ngInject */
-                    moviesPrepService: function(movieService) {
-                        return movieService.getMovies();
-                    }
-                }
-            });
-    }
-    ```
-
-    > Nota: A partir de Angular 1.3 usa el párametro `ngStrictDi` de la directiva [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp). Al presentarse el injector será creado en modo "strict-di" causando que la aplicación falle al invocar funciones que no usan explícitamente anotación de funciones (éstas podrían no estar minificadas en forma segura). Información para debugear será mostrada en la consola para ayudar a rastrear el código infractor.
-    `<body ng-app="APP" ng-strict-di>`
 
 ### Usa Gulp o Grunt para ng-annotate
 ###### [Style [Y101](#style-y101)]
