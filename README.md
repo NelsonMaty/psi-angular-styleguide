@@ -32,7 +32,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Plantillas y Snippets](#plantillas-y-snippets)
   1. [Ruteo](#ruteo)
   1. [Automatización de Tareas](#automatización-de-tareas)
-  1. [Angular Docs](#angularjs-docs)
+  1. [Angular Docs](#angular-docs)
 
 ## Single Responsibility o Responsabilidad Única
 
