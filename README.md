@@ -2097,42 +2097,4 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ## Angular docs
 Para cualquier otra cosa, refiérete a la API, mira la [documentación de Angular](//docs.angularjs.org/api).
 
-## Contribuyendo
-
-Primero abre un issue para discutir cambios/agregados potenciales. Si tienes preguntas acerca de esta guía, siéntete libre de dejarlas como issues en el repositorio. Si encuentras un typo, crea un pull request. La idea es mantener el contenido actualizado y usar las features de github para ayudar a contar la historia con issues y PR’s, los cuales pueden ser encontrados a través de google. ¿Por qué? Porque las probabilidades son que si tu tienes una pregunta, !alguien más también! Puedes aprender más aquí de cómo contribuir.
-
-*Al contribuir a este repositorio estás acordando hacer tu contenido disponible a ser parte de la licencia de este repositorio.*
-
-### Proceso
-    1. Discute los cambios en un issue de Github.
-    2. Abre un Pull Request sobre la rama de develop, referencia el issue, y explica el cambio y por qué agrega valor.
-    3. El Pull Request será evaluado y ya sea mergeado o declinado.
-
-## Licencia
-
-_tldr; Usa esta guía. Reconocimientos son apreciados._
-
-### (The MIT License)
-
-Copyright (c) 2014 [John Papa](http://johnpapa.net)
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 **[Volver arriba](#tabla-de-contenidos)**
