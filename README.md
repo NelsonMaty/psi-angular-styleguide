@@ -1976,26 +1976,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ## Constantes
 
 ### Globales de Vendor
-###### [Style [Y240](#style-y240)]
-
-  - Crea una Constante de Angular para variables globales en librerías vendor.
-
-    *¿Por qué?*: Provee una manera de inyectar librerías vendor que de otra manera son globales. Esto mejora la testeabilidad al permitirte saber más fácilmente cuáles son las dependencias de tus componentes (evita abstraciones malformadas). También te permite mockear estas dependencias, cuando tiene sentido.
-
-    ```javascript
-    // constants.js
-
-    /* global toastr:false, moment:false */
-    (function() {
-        'use strict';
-
-        angular
-            .module('app.core')
-            .constant('toastr', toastr)
-            .constant('moment', moment);
-    })();
-    ```
-
 ###### [Style [Y241](#style-y241)]
 
   - Usa constantes para valores que no cambian y no vienen de otro servicio. Cuando las constantes son usadas solo por para un módulo que pueda ser reutilizado en múltiples aplicaciones, coloca las constantes en un archivo por módulo nombrado a partir del módulo. Hasta que esto sea requerido, mantén las constantes en el módulo principal en un archivo `constants.js`.
