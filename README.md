@@ -1,6 +1,6 @@
 # Guía de estilo AngularJS para uso interno de PSI
 
-*Basada en la Guía de estilos colaborativa de Angular para equipos por [@john_papa](//twitter.com/john_papa)*
+*Basada en la Guía de estilos colaborativa de Angular para equipos por [john_papa](//github.com/johnpapa)*
 
 El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones que uso y, lo más importante, el porqué.
 
