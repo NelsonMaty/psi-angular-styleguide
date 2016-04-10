@@ -310,7 +310,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   - La sintaxis `controllerAs` usa `this` dentro de los controladores que se asocian al `$scope`
 
-  *¿Por qué?*: `controllerAs` es azúcar sintáctico sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
+  *¿Por qué?*: `controllerAs` permite una sintaxis más ágil sobre el `$scope`. Puedes enlazar a la vista y acceder a los métodos del `$scope`.
 
   *¿Por qué?*: Ayuda a evitar la tentación de usar los métodos del `$scope` dentro de un controller cuando debería ser mejor evitar usarlos o moverlos a una fábrica. Considera usar `$scope` en una factory, o en un controlador sólo cuando sea necesario. Por ejemplo cuando publicas y te suscribes a eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), o [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) considera mover estos usos a una fábrica e invocarlos desde el controlador.
 
