@@ -25,8 +25,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
   1. [Modularidad](#modularidad)
   1. [Lógica de Arranque](#lógica-de-arranque)
-  1. [Servicios Envoltorios $ de Angular](#servicios-envoltorios--de-angular)
-  1. [Pruebas](#pruebas)
   1. [Animaciones](#animaciones)
   1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
