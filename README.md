@@ -2072,7 +2072,7 @@ Enrutamiento del lado del Cliente es importante para crear un flujo de navegaci�
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Automatización de Tareas
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código. Personalmente yo prefiero Gulp ya que se siente más fácil de leer y escribir, pero ambos son excelentes.
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código.
 
 ###### [Style [Y400](#style-y400)]
 
