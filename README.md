@@ -361,7 +361,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   var vm = this;
   ```
 
-
 ### Miembros Bindeables Arriba
 ###### [Style [Y033](#style-y033)]
 
@@ -414,8 +413,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
         /* */
       }
   ```
-
-    ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
   Nota: Si la función es de una línea, déjala arriba, siempre y cuando no afecte en la legibilidad.
 
@@ -496,8 +493,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
       activate();
   }
   ```
-
-  Nótese que las cosas importantes están dispersas en el ejemplo anterior. En el siguiente ejemplo, lo importante está arriba. Por ejemplo, las variables asociadas al controlador como `vm.avengers` y `vm.title`. Los detalles de implementación están debajo. Así es más fácil de leer.
 
   ```javascript
   /*
@@ -592,61 +587,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factories y deja el controlador simple y enfocado en su vista.
 
     *¿Por qué?*: Reutilizar controladores con varias vistas es arriesgado y necesitarías buena cobertura de tests end to end (e2e) para asegurar que todo funciona bien en la aplicación.
-
-### Asignando Controladores
-###### [Style [Y038](#style-y038)]
-
-  - Cuando un controlador debe ser asociado a una vista y cada componente puede ser reutilizado por otros controladores o vistas, define controladores con sus rutas.
-
-    Nota: Si una Vista es cargada por otra además de por la ruta, entonces usa la sintaxis `ng-controller="Avengers as vm"`.
-
-    *¿Por qué?*: Emparejar el controlador en la ruta permite a diferentes rutas invocar diferentes pares de controladores y vistas. Cuando los controladores son asignados en la vista usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esa vista siempre estará asociada al mismo controlador.
-
- ```javascript
-  /* evitar - cuando se use con una ruta y queramos asociarlo dinámicamente */
-
-  // route-config.js
-  angular
-      .module('app')
-      .config(config);
-
-  function config($routeProvider) {
-      $routeProvider
-          .when('/avengers', {
-            templateUrl: 'avengers.html'
-          });
-  }
-  ```
-
-  ```html
-  <!-- avengers.html -->
-  <div ng-controller="Avengers as vm">
-  </div>
-  ```
-
-  ```javascript
-  /* recomendado */
-
-  // route-config.js
-  angular
-      .module('app')
-      .config(config);
-
-  function config($routeProvider) {
-      $routeProvider
-          .when('/avengers', {
-              templateUrl: 'avengers.html',
-              controller: 'Avengers',
-              controllerAs: 'vm'
-          });
-  }
-  ```
-
-  ```html
-  <!-- avengers.html -->
-  <div>
-  </div>
-  ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
