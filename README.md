@@ -1763,8 +1763,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
 
-    ![Modularity and Dependencies](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/modularity-1.png)
-
     *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las características de la aplicación.
 
     *¿Por qué?*: Cada área de características contiene un manifiesto de lo que depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
