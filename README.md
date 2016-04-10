@@ -1751,17 +1751,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: El módulo app se convierte en el manifiesto que describe qué módulos definen la aplicación.
 
-### Áreas de Features son Módulos
-###### [Style [Y163](#style-y163)]
-
-  - Crea módulos que representen áreas de características, como el layout, servicios reusables y compartidos, dashboards, y características específicás de la aplicación (e.g. customers, admin, sales).
-
-    *¿Por qué?*: Módulos autocontenidos pueden ser agregados a la aplicación con poca o sin ninguna fricción.
-
-    *¿Por qué?*: Sprints o iteraciones pueden enfocarse en áreas de características y encendarlas al final del sprint o iteración.
-
-    *¿Por qué?*: Separar áreas de características en módulos hace más fácil testear módulos en aislamiento y reusar código.
-
 ### Bloques Reusables son Módulos
 ###### [Style [Y164](#style-y164)]
 
