@@ -290,7 +290,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     function xxAvengerProfile() { }
     ```
 
-### Módulos
+### Módulo
 ###### [Style [Y127](#style-y127)]
 
   - Cuando haya múltiples módulos, el archivo del módulo principal es nombrado `app.module.js` mientras que otros módulos que dependan de él son nombrados a partir de lo que ellos representan. Por ejemplo, un módulo de admin es nombrado `admin.module.js`. Los nombres de los módulos registrados serán respectivamente `app` y `admin`.
