@@ -13,6 +13,9 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
   1. [Cómo Nombrar](#cómo-nombrar)
   1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
+  1. [Modularidad](#modularidad)
+  1. [Lógica de Arranque](#lógica-de-arranque)
+  1. [Automatización de Tareas](#automatización-de-tareas)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
   1. [Controladores](#controladores)
@@ -23,15 +26,12 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Minificación y Anotación](#minificación-y-anotación)
-  1. [Modularidad](#modularidad)
-  1. [Lógica de Arranque](#lógica-de-arranque)
   1. [Animaciones](#animaciones)
   1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
   1. [Constantes](#constantes)
   1. [Plantillas y Snippets](#plantillas-y-snippets)
   1. [Ruteo](#ruteo)
-  1. [Automatización de Tareas](#automatización-de-tareas)
   1. [Angular Docs](#angular-docs)
 
 
@@ -373,6 +373,115 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   function someFactory() { }
   ```
+
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Modularidad
+
+### Muy Pequeños, Módulos Autocontenidos
+###### [Style [Y160](#style-y160)]
+
+  - Crea módulos pequeños que encapsulen una responsabilidad.
+
+    *¿Por qué?*: Aplicaciones modulares hace más fácil el plug and go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas características conforme las desarrollamos.
+
+### Crea un Módulo App
+###### [Style [Y161](#style-y161)]
+
+  - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
+
+    *¿Por qué?*: Angular incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
+
+### Mantén el Módulo App Delgado
+###### [Style [Y162](#style-y162)]
+
+  - Solo coloca lógica para unir la aplicación en el módulo app. Deja las características en sus propios módulos.
+
+    *¿Por qué?*: Agregar roles adicionales a la aplicación raíz para obtener datos remotos, mostrar vistas, u otra lógica no relaciona a la unión de la aplicación enturbia el módulo app y hace ambos conjuntos de características difíciles de reusar y apagar.
+
+    *¿Por qué?*: El módulo app se convierte en el manifiesto que describe qué módulos definen la aplicación.
+
+### Bloques Reusables son Módulos
+###### [Style [Y164](#style-y164)]
+
+  - Crea módulos que representen bloques de la aplicación reusables para servicios cómunes como manejo de excepciones, logeo, diagnóstico, seguridad, y almacenamiento local de datos.
+
+    *¿Por qué?*: Este tipo de características son necesarias en muchas aplicaciones, así que mantenerlas separadas en sus propios módulos pueden ser genéricas de aplicación y pueden ser reusadas a lo largo de varias aplicaciones.
+
+### Dependencias de Módulos
+###### [Style [Y165](#style-y165)]
+
+  - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
+
+    *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las características de la aplicación.
+
+    *¿Por qué?*: Cada área de características contiene un manifiesto de lo que depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
+
+    *¿Por qué?*: Características internas de la aplicación como servicios de datos compartidos se hacen fácil de localizar y compartir desde `app.core` (elije tu nombre favorito para este módulo).
+
+    Nota: Esta es una estrategia para consistencia. Hay muy buenas opciones aquí. Escoge una que sea consistente, que siga las reglas de dependencias de AngularJS, y que sea fácil de mantener y escalar.
+
+    > Mis estructuras varían ligeramente entre proyectos pero todas ellas siguen estas pautas para estructuras y modularidad. La implementación puede variar dependiendo de las características y el equipo. En otras palabras, no te quedes colgado en una estructura igual pero justifica tu estructura usando consistencia, mantenibilidad, y eficacia en mente.
+
+    > En una aplicación pequeña, también puedes considerar poner todas las dependencias compartidas en el módulo principal dónde los módulos de características no tienen dependencias directas. Esto hace más fácil mantener aplicaciones pequeñas, pero hace más difícil el reusar módulos fuera de esta aplicación.
+
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Lógica de Arranque
+
+### Configuración
+###### [Style [Y170](#style-y170)]
+
+  - Inyecta código dentro de [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) que necesite ser configurado antes de correr la aplicación angular. Candidatos ideales incluyen providers y constantes.
+
+    *¿Por qué?*: Esto hace más fácil tener menos lugares para la configuración.
+
+  ```javascript
+  angular
+      .module('app')
+      .config(configure);
+
+  configure.$inject =
+      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
+
+  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
+      exceptionHandlerProvider.configure(config.appErrorPrefix);
+      configureStateHelper();
+
+      toastr.options.timeOut = 4000;
+      toastr.options.positionClass = 'toast-bottom-right';
+
+      ////////////////
+
+      function configureStateHelper() {
+          routerHelperProvider.configure({
+              docTitle: 'NG-Modular: '
+          });
+      }
+  }
+  ```
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Automatización de Tareas
+Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código.
+
+###### [Style [Y400](#style-y400)]
+
+  - Usa automatización de tareas para listar archivos que definan módulos `*.module.js` antes que otros archivos de JavaScript en la aplicación.
+
+    *¿Por qué?*: Angular necesita la definición de módulos para ser registrados antes de que sean usados.
+
+    *¿Por qué?*: Nombra módulos con un patrón específico como `*.module.js` hace más fácil tomarlos con un glob y listarlos primero.
+
+    ```javascript
+    var clientApp = './src/client/app/';
+
+    // Siempre toma archivos de módulos primero
+    var files = [
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.js'
+    ];
+    ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -1722,93 +1831,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Modularidad
-
-### Muy Pequeños, Módulos Autocontenidos
-###### [Style [Y160](#style-y160)]
-
-  - Crea módulos pequeños que encapsulen una responsabilidad.
-
-    *¿Por qué?*: Aplicaciones modulares hace más fácil el plug and go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas características conforme las desarrollamos.
-
-### Crea un Módulo App
-###### [Style [Y161](#style-y161)]
-
-  - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
-
-    *¿Por qué?*: Angular incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
-
-### Mantén el Módulo App Delgado
-###### [Style [Y162](#style-y162)]
-
-  - Solo coloca lógica para unir la aplicación en el módulo app. Deja las características en sus propios módulos.
-
-    *¿Por qué?*: Agregar roles adicionales a la aplicación raíz para obtener datos remotos, mostrar vistas, u otra lógica no relaciona a la unión de la aplicación enturbia el módulo app y hace ambos conjuntos de características difíciles de reusar y apagar.
-
-    *¿Por qué?*: El módulo app se convierte en el manifiesto que describe qué módulos definen la aplicación.
-
-### Bloques Reusables son Módulos
-###### [Style [Y164](#style-y164)]
-
-  - Crea módulos que representen bloques de la aplicación reusables para servicios cómunes como manejo de excepciones, logeo, diagnóstico, seguridad, y almacenamiento local de datos.
-
-    *¿Por qué?*: Este tipo de características son necesarias en muchas aplicaciones, así que mantenerlas separadas en sus propios módulos pueden ser genéricas de aplicación y pueden ser reusadas a lo largo de varias aplicaciones.
-
-### Dependencias de Módulos
-###### [Style [Y165](#style-y165)]
-
-  - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
-
-    *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las características de la aplicación.
-
-    *¿Por qué?*: Cada área de características contiene un manifiesto de lo que depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
-
-    *¿Por qué?*: Características internas de la aplicación como servicios de datos compartidos se hacen fácil de localizar y compartir desde `app.core` (elije tu nombre favorito para este módulo).
-
-    Nota: Esta es una estrategia para consistencia. Hay muy buenas opciones aquí. Escoge una que sea consistente, que siga las reglas de dependencias de AngularJS, y que sea fácil de mantener y escalar.
-
-    > Mis estructuras varían ligeramente entre proyectos pero todas ellas siguen estas pautas para estructuras y modularidad. La implementación puede variar dependiendo de las características y el equipo. En otras palabras, no te quedes colgado en una estructura igual pero justifica tu estructura usando consistencia, mantenibilidad, y eficacia en mente.
-
-    > En una aplicación pequeña, también puedes considerar poner todas las dependencias compartidas en el módulo principal dónde los módulos de características no tienen dependencias directas. Esto hace más fácil mantener aplicaciones pequeñas, pero hace más difícil el reusar módulos fuera de esta aplicación.
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Lógica de Arranque
-
-### Configuración
-###### [Style [Y170](#style-y170)]
-
-  - Inyecta código dentro de [module configuration](https://docs.angularjs.org/guide/module#module-loading-dependencies) que necesite ser configurado antes de correr la aplicación angular. Candidatos ideales incluyen providers y constantes.
-
-    *¿Por qué?*: Esto hace más fácil tener menos lugares para la configuración.
-
-  ```javascript
-  angular
-      .module('app')
-      .config(configure);
-
-  configure.$inject =
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
-      exceptionHandlerProvider.configure(config.appErrorPrefix);
-      configureStateHelper();
-
-      toastr.options.timeOut = 4000;
-      toastr.options.positionClass = 'toast-bottom-right';
-
-      ////////////////
-
-      function configureStateHelper() {
-          routerHelperProvider.configure({
-              docTitle: 'NG-Modular: '
-          });
-      }
-  }
-  ```
-
-**[Volver arriba](#tabla-de-contenidos)**
-
 ## Animaciones
 
 ### Uso
@@ -2067,29 +2089,6 @@ Enrutamiento del lado del Cliente es importante para crear un flujo de navegaci�
     *¿Por qué?*: Al remover un módulo o al agregar un módulo, la aplicación solo contendrá rutas que apunten a las vistas existentes.
 
     *¿Por qué?*: Esto hace más fácil habilitar o deshabilitar porciones de una aplicación sin preocuparse de rutas huérfanas.
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Automatización de Tareas
-Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código.
-
-###### [Style [Y400](#style-y400)]
-
-  - Usa automatización de tareas para listar archivos que definan módulos `*.module.js` antes que otros archivos de JavaScript en la aplicación.
-
-    *¿Por qué?*: Angular necesita la definición de módulos para ser registrados antes de que sean usados.
-
-    *¿Por qué?*: Nombra módulos con un patrón específico como `*.module.js` hace más fácil tomarlos con un glob y listarlos primero.
-
-    ```javascript
-    var clientApp = './src/client/app/';
-
-    // Siempre toma archivos de módulos primero
-    var files = [
-      clientApp + '**/*.module.js',
-      clientApp + '**/*.js'
-    ];
-    ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
