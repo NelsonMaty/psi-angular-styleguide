@@ -9,6 +9,8 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 ## Tabla de contenidos
 
+  1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
+  1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
   1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
@@ -21,8 +23,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Minificación y Anotación](#minificación-y-anotación)
   1. [Cómo Nombrar](#cómo-nombrar)
-  1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
-  1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
   1. [Modularidad](#modularidad)
   1. [Lógica de Arranque](#lógica-de-arranque)
   1. [Animaciones](#animaciones)
@@ -33,6 +33,109 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Ruteo](#ruteo)
   1. [Automatización de Tareas](#automatización-de-tareas)
   1. [Angular Docs](#angular-docs)
+
+
+## Estructura de la Aplicación El Principio LIFT
+### LIFT
+###### [Style [Y140](#style-y140)]
+
+  - Estructura tu aplicación de tal manera que puedas Localizar (`L`ocate) tu código rápidamente, Identificar (`I`dentify) el código de un vistazo, mantener la estructura más plana (`F`lattest) que puedas, y Trata (`T`ry) de mantenerte DRY. La estructura debe de seguir estas 4 pautas básicas.
+
+    *¿Por qué LIFT?*: Provee una estructura consistente que escala bien, es modular, y hace más fácil incrementar la eficiencia de los desarrolladores al encontrar código rápidamente. Otra manera de checar la estructura de tu aplicación es preguntarte a ti mismo: ¿Qué tan rápido puede abrir y trabajar en todos los archivos relacionados a una caracteristica?
+
+    Cuando encuentro que mi estructura no se siente cómoda, regreso y reviso estas pautas LIFT
+
+    1. `L`ocating - Localizar nuestro código es fácil
+    2. `I`dentify - Identificar código de un vistazo
+    3. `F`lat - Estructura plana tanto como sea posible
+    4. `T`ry - Tratar de mantenerse DRY (Don't Repeat Yourself) or T-DRY
+
+### Localizar
+###### [Style [Y141](#style-y141)]
+
+  - Has que la localización tu código sea intuitivo, simple y rápido.
+
+    *¿Por qué?*: Encuentro que esto es super importante para un proyecto. Si el equipo no puede encontrar los archivos en los que necesita trabajar rápidamente, no podrán trabajar tan eficientemente como sea posible, y la estructura necesita cambiar. Puede que no conozcas el nombre del archivo o donde están sus archivos relacionados, así que poniéndolos en las locaciones más intuitivas y cerca de los otros ahorra mucho tiempo. Una estructura de directorios descriptiva puede ayudar con esto.
+
+
+### Identificar
+###### [Style [Y142](#style-y142)]
+
+  - Cuando miras en un archivo deberías saber instantáneamente qué contiene y qué representa.
+
+    *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del archivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla. Hay excepciones a la regla de 1 por archivo cuando tengo un conjunto de pequeñas features que están relacionadas unas con otras, aún así son fácilmente identificables.
+
+### Estructura Plana
+###### [Style [Y143](#style-y143)]
+
+  - Mantén una estructura de directorios plana tanto como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
+
+    *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. Piensa en los menús de los sitios web … cualquiera más profundo que 2 debería ser seriamente considerado. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
+
+### T-DRY (Try to Stick to DRY - Trata de Apegarte a DRY)
+###### [Style [Y144](#style-y144)]
+
+  - Se DRY, pero no te vuelvas loco y sacrifiques legibilidad.
+
+    *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que lo llamo T-DRY. No quiero escribir session-view.html por una vista porque, obviamente es una vista. Si no es obvio o por convención, entonces la nombro así.
+
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Estructura de la Aplicación
+
+### Estructura de Carpetas-por-Característica
+###### [Style [Y152](#style-y152)]
+
+  - Crea carpetas llamadas de acuerdo al característica que representan. Cuando una carpeta crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
+
+    *¿Por qué?*: Un desarrollador puede localizar el código, identificar cada qué representa cada archivo de un vistazo, la estructura es tan plana como puede ser, y no hay nombres repetidos o redundantes.
+
+    *¿Por qué?*: Las pautas LIFT estarán cubiertas.
+
+    *¿Por qué?*: Ayuda a evitar que la aplicación se sature a través de organizar el contenido y conservarlo alineado con las pautas LIFT.
+
+    *¿Por qué?*: Cuando hay demasiados archivos (10+) localizarlos es más fácil con una estructura de directorios consistente y más difíciles en una estructura plana.
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    app/
+        app.module.js
+        app.config.js
+        app.routes.js
+        components/
+            calendar.directive.js
+            calendar.directive.html
+            user-profile.directive.js
+            user-profile.directive.html
+        layout/
+            shell.html
+            shell.controller.js
+            topnav.html
+            topnav.controller.js
+        people/
+            attendees.html
+            attendees.controller.js
+            speakers.html
+            speakers.controller.js
+            speaker-detail.html
+            speaker-detail.controller.js
+        services/
+            data.service.js
+            localstorage.service.js
+            logger.service.js
+            spinner.service.js
+        sessions/
+            sessions.html
+            sessions.controller.js
+            session-detail.html
+            session-detail.controller.js
+    ```
+      Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
+
+**[Volver arriba](#tabla-de-contenidos)**
 
 ## Single Responsibility o Responsabilidad Única
 
@@ -1616,108 +1719,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ###### [Style [Y129](#style-y129)]
 
   - Separa la configuración de la ruta en un archivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Estructura de la Aplicación El Principio LIFT
-### LIFT
-###### [Style [Y140](#style-y140)]
-
-  - Estructura tu aplicación de tal manera que puedas Localizar (`L`ocate) tu código rápidamente, Identificar (`I`dentify) el código de un vistazo, mantener la estructura más plana (`F`lattest) que puedas, y Trata (`T`ry) de mantenerte DRY. La estructura debe de seguir estas 4 pautas básicas.
-
-    *¿Por qué LIFT?*: Provee una estructura consistente que escala bien, es modular, y hace más fácil incrementar la eficiencia de los desarrolladores al encontrar código rápidamente. Otra manera de checar la estructura de tu aplicación es preguntarte a ti mismo: ¿Qué tan rápido puede abrir y trabajar en todos los archivos relacionados a una caracteristica?
-
-    Cuando encuentro que mi estructura no se siente cómoda, regreso y reviso estas pautas LIFT
-
-    1. `L`ocating - Localizar nuestro código es fácil
-    2. `I`dentify - Identificar código de un vistazo
-    3. `F`lat - Estructura plana tanto como sea posible
-    4. `T`ry - Tratar de mantenerse DRY (Don't Repeat Yourself) or T-DRY
-
-### Localizar
-###### [Style [Y141](#style-y141)]
-
-  - Has que la localización tu código sea intuitivo, simple y rápido.
-
-    *¿Por qué?*: Encuentro que esto es super importante para un proyecto. Si el equipo no puede encontrar los archivos en los que necesita trabajar rápidamente, no podrán trabajar tan eficientemente como sea posible, y la estructura necesita cambiar. Puede que no conozcas el nombre del archivo o donde están sus archivos relacionados, así que poniéndolos en las locaciones más intuitivas y cerca de los otros ahorra mucho tiempo. Una estructura de directorios descriptiva puede ayudar con esto.
-
-
-### Identificar
-###### [Style [Y142](#style-y142)]
-
-  - Cuando miras en un archivo deberías saber instantáneamente qué contiene y qué representa.
-
-    *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del archivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla. Hay excepciones a la regla de 1 por archivo cuando tengo un conjunto de pequeñas features que están relacionadas unas con otras, aún así son fácilmente identificables.
-
-### Estructura Plana
-###### [Style [Y143](#style-y143)]
-
-  - Mantén una estructura de directorios plana tanto como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
-
-    *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. Piensa en los menús de los sitios web … cualquiera más profundo que 2 debería ser seriamente considerado. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
-
-### T-DRY (Try to Stick to DRY - Trata de Apegarte a DRY)
-###### [Style [Y144](#style-y144)]
-
-  - Se DRY, pero no te vuelvas loco y sacrifiques legibilidad.
-
-    *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que lo llamo T-DRY. No quiero escribir session-view.html por una vista porque, obviamente es una vista. Si no es obvio o por convención, entonces la nombro así.
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Estructura de la Aplicación
-
-### Estructura de Carpetas-por-Característica
-###### [Style [Y152](#style-y152)]
-
-  - Crea carpetas llamadas de acuerdo al característica que representan. Cuando una carpeta crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
-
-    *¿Por qué?*: Un desarrollador puede localizar el código, identificar cada qué representa cada archivo de un vistazo, la estructura es tan plana como puede ser, y no hay nombres repetidos o redundantes.
-
-    *¿Por qué?*: Las pautas LIFT estarán cubiertas.
-
-    *¿Por qué?*: Ayuda a evitar que la aplicación se sature a través de organizar el contenido y conservarlo alineado con las pautas LIFT.
-
-    *¿Por qué?*: Cuando hay demasiados archivos (10+) localizarlos es más fácil con una estructura de directorios consistente y más difíciles en una estructura plana.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    app/
-        app.module.js
-        app.config.js
-        app.routes.js
-        components/
-            calendar.directive.js
-            calendar.directive.html
-            user-profile.directive.js
-            user-profile.directive.html
-        layout/
-            shell.html
-            shell.controller.js
-            topnav.html
-            topnav.controller.js
-        people/
-            attendees.html
-            attendees.controller.js
-            speakers.html
-            speakers.controller.js
-            speaker-detail.html
-            speaker-detail.controller.js
-        services/
-            data.service.js
-            localstorage.service.js
-            logger.service.js
-            spinner.service.js
-        sessions/
-            sessions.html
-            sessions.controller.js
-            session-detail.html
-            session-detail.controller.js
-    ```
-      Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
