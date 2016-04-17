@@ -11,6 +11,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
   1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
+  1. [Cómo Nombrar](#cómo-nombrar)
   1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
@@ -22,7 +23,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Minificación y Anotación](#minificación-y-anotación)
-  1. [Cómo Nombrar](#cómo-nombrar)
   1. [Modularidad](#modularidad)
   1. [Lógica de Arranque](#lógica-de-arranque)
   1. [Animaciones](#animaciones)
@@ -134,6 +134,184 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
             session-detail.controller.js
     ```
       Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
+
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Cómo Nombrar
+
+### Pautas para nombrar
+###### [Style [Y120](#style-y120)]
+
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa las características del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`. Hay dos nombres para la mayoría de los assets:
+    * el nombre del archivo (`avengers.controller.js`)
+    * el nombre del componente registrado en Angular (`AvengersController`)
+
+    *¿Por qué?*: Las pautas de como nombrar nos ayudan a proveer una manera consistente para encontrar contenido en un vistazo. La Consistencia es vital dentro del proyecto. La Consistencia es importante dentro de un equipo. La Consistencia a lo largo de una compañía provee de una tremenda eficacia.
+
+    *¿Por qué?*: Las pautas para nombrar deberían simplemente ayudarte a encontrar tu código rápidamente y hacerlo más fácil de entender.
+
+### Nombres de Archivo para Característica
+###### [Style [Y121](#style-y121)]
+
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa la característica o feature del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`.
+
+    *¿Por qué?*: Provee de una manera consistente para identificar componentes rápidamente.
+
+    *¿Por qué?*: Provee un patrón de coincidencia para tareas automatizadas.
+
+    ```javascript
+    /**
+     * opciones comunes
+     */
+
+    // Controladores
+    avengers.js
+    avengers.controller.js
+    avengersController.js
+
+    // Servicios/Factories
+    logger.js
+    logger.service.js
+    loggerService.js
+    ```
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    // controllers
+    avengers.controller.js
+    avengers.controller.spec.js
+
+    // servicios/factories
+    logger.service.js
+    logger.service.spec.js
+
+    // constantes
+    constants.js
+
+    // definición de módulos
+    avengers.module.js
+
+    // rutas
+    avengers.routes.js
+    avengers.routes.spec.js
+
+    // configuración
+    avengers.config.js
+
+    // directivas
+    avenger-profile.directive.js
+    avenger-profile.directive.spec.js
+    ```
+
+### Nombres de Controladores
+###### [Style [Y123](#style-y123)]
+
+  - Usa nombres consistentes para todos los controladores nombrados a partir de lo que hacen. Usa UpperCamelCase para controladores, ya que son constructores.
+
+    *¿Por qué?*: Provee de una manera consistente de identificar y referenciar controladores rápidamente.
+
+    *¿Por qué?*: UpperCamelCase es convencional para identificar objetos que pueden ser instanciados usando un constructor.
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    // avengers.controller.js
+    angular
+        .module
+        .controller('HeroAvengers', HeroAvengers);
+
+    function HeroAvengers() { }
+    ```
+
+### Sufijo para el Nombre del Controlador
+###### [Style [Y124](#style-y124)]
+
+  - Agrega el sufijo `Controller` al nombre del controlador.
+
+    *¿Por qué?*: El sufijo `Controller` es usado más comúnmente y es más descriptivo explícitamente.
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    // avengers.controller.js
+    angular
+        .module
+        .controller('AvengersController', AvengersController);
+
+    function AvengersController() { }
+    ```
+
+### Nombres de Factory
+###### [Style [Y125](#style-y125)]
+
+  - Usa nombres consistentes para todas las factories nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factories.
+
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar factories rápidamente.
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    // logger.service.js
+    angular
+        .module
+        .factory('logger', logger);
+
+    function logger() { }
+    ```
+
+### Nombres para Directivas
+###### [Style [Y126](#style-y126)]
+
+  - Usa nombres consistentes para todas las directivas usando camel-case. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
+
+    *¿Por qué?*: Provee una manera consistente de identificar y referenciar componentes rápidamente.
+
+    ```javascript
+    /**
+     * recomendado
+     */
+
+    // avenger-profile.directive.js
+    angular
+        .module
+        .directive('xxAvengerProfile', xxAvengerProfile);
+
+    // el uso es <xx-avenger-profile> </xx-avenger-profile>
+
+    function xxAvengerProfile() { }
+    ```
+
+### Módulos
+###### [Style [Y127](#style-y127)]
+
+  - Cuando haya múltiples módulos, el archivo del módulo principal es nombrado `app.module.js` mientras que otros módulos que dependan de él son nombrados a partir de lo que ellos representan. Por ejemplo, un módulo de admin es nombrado `admin.module.js`. Los nombres de los módulos registrados serán respectivamente `app` y `admin`.
+
+    *¿Por qué?*: Provee consistencia para múltiples módulos de aplicación, y para poder expandirse a aplicaciones más grandes.
+
+    *¿Por qué?*: Provee una manera fácil de usar tareas automatizadas para cargar todas las definiciones de módulos primero, y luego todos los otros archivos de angular (agrupación).
+
+### Configuración
+###### [Style [Y128](#style-y128)]
+
+  - Separa la configuración de un módulo en un archivo propio nombrado a partir del nombre del módulo. Un archivo de configuración para el módulo principal de `app` es nombrado `app.config.js` (o simplemente `config.js`). La configuración para un módulo llamado `admin.module.js` es nombrada `admin.config.js`.
+
+    *¿Por qué?*: Separa la configuración de la definición del módulo, componentes y código activo.
+
+    *¿Por qué?*: Provee un lugar identificable para establecer configuración para un módulo.
+
+### Rutas
+###### [Style [Y129](#style-y129)]
+
+  - Separa la configuración de la ruta en un archivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -1541,184 +1719,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     });
 
     ```
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Cómo Nombrar
-
-### Pautas para nombrar
-###### [Style [Y120](#style-y120)]
-
-  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa las características del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`. Hay dos nombres para la mayoría de los assets:
-    * el nombre del archivo (`avengers.controller.js`)
-    * el nombre del componente registrado en Angular (`AvengersController`)
-
-    *¿Por qué?*: Las pautas de como nombrar nos ayudan a proveer una manera consistente para encontrar contenido en un vistazo. La Consistencia es vital dentro del proyecto. La Consistencia es importante dentro de un equipo. La Consistencia a lo largo de una compañía provee de una tremenda eficacia.
-
-    *¿Por qué?*: Las pautas para nombrar deberían simplemente ayudarte a encontrar tu código rápidamente y hacerlo más fácil de entender.
-
-### Nombres de Archivo para Característica
-###### [Style [Y121](#style-y121)]
-
-  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa la característica o feature del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`.
-
-    *¿Por qué?*: Provee de una manera consistente para identificar componentes rápidamente.
-
-    *¿Por qué?*: Provee un patrón de coincidencia para tareas automatizadas.
-
-    ```javascript
-    /**
-     * opciones comunes
-     */
-
-    // Controladores
-    avengers.js
-    avengers.controller.js
-    avengersController.js
-
-    // Servicios/Factories
-    logger.js
-    logger.service.js
-    loggerService.js
-    ```
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    // controllers
-    avengers.controller.js
-    avengers.controller.spec.js
-
-    // servicios/factories
-    logger.service.js
-    logger.service.spec.js
-
-    // constantes
-    constants.js
-
-    // definición de módulos
-    avengers.module.js
-
-    // rutas
-    avengers.routes.js
-    avengers.routes.spec.js
-
-    // configuración
-    avengers.config.js
-
-    // directivas
-    avenger-profile.directive.js
-    avenger-profile.directive.spec.js
-    ```
-
-### Nombres de Controladores
-###### [Style [Y123](#style-y123)]
-
-  - Usa nombres consistentes para todos los controladores nombrados a partir de lo que hacen. Usa UpperCamelCase para controladores, ya que son constructores.
-
-    *¿Por qué?*: Provee de una manera consistente de identificar y referenciar controladores rápidamente.
-
-    *¿Por qué?*: UpperCamelCase es convencional para identificar objetos que pueden ser instanciados usando un constructor.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('HeroAvengers', HeroAvengers);
-
-    function HeroAvengers() { }
-    ```
-
-### Sufijo para el Nombre del Controlador
-###### [Style [Y124](#style-y124)]
-
-  - Agrega el sufijo `Controller` al nombre del controlador.
-
-    *¿Por qué?*: El sufijo `Controller` es usado más comúnmente y es más descriptivo explícitamente.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    // avengers.controller.js
-    angular
-        .module
-        .controller('AvengersController', AvengersController);
-
-    function AvengersController() { }
-    ```
-
-### Nombres de Factory
-###### [Style [Y125](#style-y125)]
-
-  - Usa nombres consistentes para todas las factories nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factories.
-
-    *¿Por qué?*: Provee una manera consistente de identificar y referenciar factories rápidamente.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    // logger.service.js
-    angular
-        .module
-        .factory('logger', logger);
-
-    function logger() { }
-    ```
-
-### Nombres para Directivas
-###### [Style [Y126](#style-y126)]
-
-  - Usa nombres consistentes para todas las directivas usando camel-case. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
-
-    *¿Por qué?*: Provee una manera consistente de identificar y referenciar componentes rápidamente.
-
-    ```javascript
-    /**
-     * recomendado
-     */
-
-    // avenger-profile.directive.js
-    angular
-        .module
-        .directive('xxAvengerProfile', xxAvengerProfile);
-
-    // el uso es <xx-avenger-profile> </xx-avenger-profile>
-
-    function xxAvengerProfile() { }
-    ```
-
-### Módulos
-###### [Style [Y127](#style-y127)]
-
-  - Cuando haya múltiples módulos, el archivo del módulo principal es nombrado `app.module.js` mientras que otros módulos que dependan de él son nombrados a partir de lo que ellos representan. Por ejemplo, un módulo de admin es nombrado `admin.module.js`. Los nombres de los módulos registrados serán respectivamente `app` y `admin`.
-
-    *¿Por qué?*: Provee consistencia para múltiples módulos de aplicación, y para poder expandirse a aplicaciones más grandes.
-
-    *¿Por qué?*: Provee una manera fácil de usar tareas automatizadas para cargar todas las definiciones de módulos primero, y luego todos los otros archivos de angular (agrupación).
-
-### Configuración
-###### [Style [Y128](#style-y128)]
-
-  - Separa la configuración de un módulo en un archivo propio nombrado a partir del nombre del módulo. Un archivo de configuración para el módulo principal de `app` es nombrado `app.config.js` (o simplemente `config.js`). La configuración para un módulo llamado `admin.module.js` es nombrada `admin.config.js`.
-
-    *¿Por qué?*: Separa la configuración de la definición del módulo, componentes y código activo.
-
-    *¿Por qué?*: Provee un lugar identificable para establecer configuración para un módulo.
-
-### Rutas
-###### [Style [Y129](#style-y129)]
-
-  - Separa la configuración de la ruta en un archivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
