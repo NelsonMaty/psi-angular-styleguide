@@ -100,7 +100,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     app/
         app.module.js
         app.config.js
-        app.routes.js
+        app.route.js
         components/
             calendar.directive.js
             calendar.directive.html
@@ -163,11 +163,9 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     // controllers
     avengers.controller.js
     avengers-detail.controller.js
-    avengers.controller.spec.js
 
     // servicios/factories
     logger.service.js
-    logger.service.spec.js
 
     // constantes
     constants.js
@@ -176,15 +174,13 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     avengers.module.js
 
     // rutas
-    avengers.routes.js
-    avengers.routes.spec.js
+    avengers.route.js
 
     // configuración
     avengers.config.js
 
     // directivas
     avenger-profile.directive.js
-    avenger-profile.directive.spec.js
     ```
 
 ### Nombres de Controladores
@@ -232,7 +228,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Nombres de Factory
 ###### [Style [Y125](#style-y125)]
 
-  - Usa nombres consistentes para todas las factories nombradas a partir de lo que hacen. Usa camel-casing para los servicios y las factories.
+  - Usa nombres consistentes para todas las factorias nombradas a partir de lo que hacen. Usa lowerCamelCase para los servicios y las factories.
 
     *¿Por qué?*: Provee una manera consistente de identificar y referenciar factories rápidamente.
 
@@ -241,7 +237,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
      * recomendado
      */
 
-    // logger.service.js
+    // logger.factory.js
     angular
         .module
         .factory('logger', logger);
@@ -252,9 +248,11 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Nombres para Directivas
 ###### [Style [Y126](#style-y126)]
 
-  - Usa nombres consistentes para todas las directivas usando camel-case. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
+  - Usa nombres consistentes para todas las directivas usando lowerCamelCase. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
 
     *¿Por qué?*: Provee una manera consistente de identificar y referenciar componentes rápidamente.
+
+    *¿Por qué?*: El prefijo evita la colisión de nombres.
 
     ```javascript
     /**

@@ -11,7 +11,7 @@
         params: {
           toDoId: null
         },
-        templateUrl: "app/editToDo/editToDo.view.html",
+        templateUrl: "app/edit-todo/edit.html",
         controller: 'EditController',
         controllerAs: 'vm',
         title: 'Edición de tarea'

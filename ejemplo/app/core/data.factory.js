@@ -3,12 +3,12 @@
 
     angular
         .module('app.core')
-        .factory('datafactory', factory);
+        .factory('dataFactory', dataFactory);
 
-    // factory.$inject = [];
+    // dataFactory.$inject = [];
 
     /* @ngInject */
-    function factory() {
+    function dataFactory() {
 
         var todos = [];
 
