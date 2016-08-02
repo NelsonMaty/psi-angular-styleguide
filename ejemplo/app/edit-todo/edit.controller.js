@@ -5,7 +5,7 @@
         .module('app.editToDo')
         .controller('EditController', EditController);
 
-    EditController.$inject = ['datafactory', '$state','$stateParams'];
+    EditController.$inject = ['dataFactory', '$state','$stateParams'];
 
     /* @ngInject */
     function EditController(datafactory, $state, $stateParams) {

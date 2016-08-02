@@ -4,7 +4,7 @@
         .module('app.viewToDo')
         .controller('ViewController', ViewController);
 
-    ViewController.$inject = ['datafactory', '$state'];
+    ViewController.$inject = ['dataFactory', '$state'];
 
     /* @ngInject */
     function ViewController(datafactory, $state) {

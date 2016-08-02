@@ -5,7 +5,7 @@
         .module('app.newToDo')
         .controller('NewController', NewController);
 
-    NewController.$inject = ['datafactory','$state'];
+    NewController.$inject = ['dataFactory','$state'];
 
     /* @ngInject */
     function NewController(datafactory, $state) {
