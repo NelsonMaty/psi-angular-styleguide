@@ -12,7 +12,7 @@
           toDoId: null
         },
         templateUrl: "app/editToDo/editToDo.view.html",
-        controller: 'editController',
+        controller: 'EditController',
         controllerAs: 'vm',
         title: 'Edición de tarea'
       });

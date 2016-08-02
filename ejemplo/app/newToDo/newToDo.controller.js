@@ -3,7 +3,7 @@
 
     angular
         .module('app.newToDo')
-        .controller('newController', Controller);
+        .controller('NewController', Controller);
 
     Controller.$inject = ['datafactory','$state'];
 

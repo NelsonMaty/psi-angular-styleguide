@@ -9,7 +9,7 @@
       .state('view', {
         url: "/view",
         templateUrl: "app/viewToDo/viewToDo.view.html",
-        controller: 'viewController',
+        controller: 'ViewController',
         controllerAs: 'vm',
         title: 'Listado de tareas'
       });

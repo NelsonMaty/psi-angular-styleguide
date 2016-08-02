@@ -2,7 +2,7 @@
 
 *Basada en la guía de estilos colaborativa de Angular para equipos por [john_papa](//github.com/johnpapa)*
 
-El propósito de esta guía de estilos es proporcionar una guía de cómo construir aplicaciones con Angular enseñando convenciones de uso y, lo más importante, el porqué.
+El propósito de este documento es proporcionar una guía de cómo construir aplicaciones con Angular aplicando convenciones de uso.
 
 ## Mira los estilos en la aplicación de ejemplo
 Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y patrones.
@@ -41,11 +41,9 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   - Estructura tu aplicación de tal manera que puedas Localizar (`L`ocate) tu código rápidamente, Identificar (`I`dentify) el código de un vistazo, mantener la estructura más plana (`F`lattest) que puedas, y Trata (`T`ry) de mantenerte DRY. La estructura debe de seguir estas 4 pautas básicas.
 
-    *¿Por qué LIFT?*: Provee una estructura consistente que escala bien, es modular, y hace más fácil incrementar la eficiencia de los desarrolladores al encontrar código rápidamente. Otra manera de checar la estructura de tu aplicación es preguntarte a ti mismo: ¿Qué tan rápido puede abrir y trabajar en todos los archivos relacionados a una caracteristica?
+    *¿Por qué LIFT?*: Provee una estructura consistente que escala facilmente, es modular, e incrementa la eficiencia de los desarrolladores al encontrar código rápidamente.
 
-    Cuando encuentro que mi estructura no se siente cómoda, regreso y reviso estas pautas LIFT
-
-    1. `L`ocating - Localizar nuestro código es fácil
+    1. `L`ocating - Localizar nuestro código fácil
     2. `I`dentify - Identificar código de un vistazo
     3. `F`lat - Estructura plana tanto como sea posible
     4. `T`ry - Tratar de mantenerse DRY (Don't Repeat Yourself) or T-DRY
@@ -53,9 +51,9 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Localizar
 ###### [Style [Y141](#style-y141)]
 
-  - Has que la localización tu código sea intuitivo, simple y rápido.
+  - Hace que la localización de tu código sea intuitivo, simple y rápido.
 
-    *¿Por qué?*: Encuentro que esto es super importante para un proyecto. Si el equipo no puede encontrar los archivos en los que necesita trabajar rápidamente, no podrán trabajar tan eficientemente como sea posible, y la estructura necesita cambiar. Puede que no conozcas el nombre del archivo o donde están sus archivos relacionados, así que poniéndolos en las locaciones más intuitivas y cerca de los otros ahorra mucho tiempo. Una estructura de directorios descriptiva puede ayudar con esto.
+    *¿Por qué?*: Si el equipo no puede encontrar los archivos en los que necesita trabajar rápidamente, no podrán trabajar tan eficientemente como sea posible, y la estructura necesita cambiar. Puede que no conozcas el nombre del archivo o donde están sus archivos relacionados, así que poniéndolos en las locaciones más intuitivas y cerca de los otros ahorra mucho tiempo. Una estructura de directorios descriptiva puede ayudar con esto.
 
 
 ### Identificar
@@ -63,21 +61,21 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   - Cuando miras en un archivo deberías saber instantáneamente qué contiene y qué representa.
 
-    *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del archivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla. Hay excepciones a la regla de 1 por archivo cuando tengo un conjunto de pequeñas features que están relacionadas unas con otras, aún así son fácilmente identificables.
+    *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del archivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla.
 
 ### Estructura Plana
 ###### [Style [Y143](#style-y143)]
 
-  - Mantén una estructura de directorios plana tanto como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
+  - Mantén una estructura de directorios tan plana como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
 
-    *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. Piensa en los menús de los sitios web … cualquiera más profundo que 2 debería ser seriamente considerado. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
+    *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
 
 ### T-DRY (Try to Stick to DRY - Trata de Apegarte a DRY)
 ###### [Style [Y144](#style-y144)]
 
   - Se DRY, pero no te vuelvas loco y sacrifiques legibilidad.
 
-    *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que lo llamo T-DRY. No quiero escribir session-view.html por una vista porque, obviamente es una vista. Si no es obvio o por convención, entonces la nombro así.
+    *¿Por qué?*: Ser DRY es importante, pero no crucial si sacrifica otras partes de LIFT, es por eso que se llama T-DRY.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -86,13 +84,11 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Estructura de Carpetas-por-Característica
 ###### [Style [Y152](#style-y152)]
 
-  - Crea carpetas llamadas de acuerdo al característica que representan. Cuando una carpeta crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
+  - Crea carpetas llamadas de acuerdo a la característica que representan. Cuando una carpeta crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
 
-    *¿Por qué?*: Un desarrollador puede localizar el código, identificar cada qué representa cada archivo de un vistazo, la estructura es tan plana como puede ser, y no hay nombres repetidos o redundantes.
+    *¿Por qué?*: Un desarrollador puede localizar el código e identificar qué representa cada archivo de un vistazo.
 
-    *¿Por qué?*: Las pautas LIFT estarán cubiertas.
-
-    *¿Por qué?*: Ayuda a evitar que la aplicación se sature a través de organizar el contenido y conservarlo alineado con las pautas LIFT.
+    *¿Por qué?*: Al organizar el contenido y aplicando las pautas LIFT se evita que la aplicación se sature.
 
     *¿Por qué?*: Cuando hay demasiados archivos (10+) localizarlos es más fácil con una estructura de directorios consistente y más difíciles en una estructura plana.
 
@@ -133,7 +129,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
             session-detail.html
             session-detail.controller.js
     ```
-      Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere mover múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar conforme la aplicación crece a 5, 10 o 25+ vistas y controladores (y otras características), lo que lo hace más difícil que localizar archivos en una aplicación estructura en directorios-por-característica.
+      Nota: No estructures tu aplicación usando directorios-por-tipo. Esto requiere navegar sobre múltiples directorios cuando se está trabajando en una característica y se vuelve difícil de manejar.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -142,38 +138,22 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Pautas para nombrar
 ###### [Style [Y120](#style-y120)]
 
-  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa las características del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`. Hay dos nombres para la mayoría de los assets:
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa las características del componente y después (opcionalmente) su tipo. El patrón recomendado es `feature.type.js`. Hay dos nombres para la mayoría de los assets:
     * el nombre del archivo (`avengers.controller.js`)
     * el nombre del componente registrado en Angular (`AvengersController`)
 
-    *¿Por qué?*: Las pautas de como nombrar nos ayudan a proveer una manera consistente para encontrar contenido en un vistazo. La Consistencia es vital dentro del proyecto. La Consistencia es importante dentro de un equipo. La Consistencia a lo largo de una compañía provee de una tremenda eficacia.
+    *¿Por qué?*: Las pautas de como nombrar nos ayudan a proveer una manera consistente para encontrar contenido en un vistazo. La consistencia es vital dentro del proyecto. La consistencia es importante dentro de un equipo. La consistencia provee de una tremenda eficacia.
 
     *¿Por qué?*: Las pautas para nombrar deberían simplemente ayudarte a encontrar tu código rápidamente y hacerlo más fácil de entender.
 
 ### Nombres de Archivo para Característica
 ###### [Style [Y121](#style-y121)]
 
-  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa la característica o feature del componente y después (opcionalmente) su tipo. Mi patrón recomendado es `feature.type.js`.
+  - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa la característica del mismo, y después (opcionalmente) su tipo. El patrón recomendado es `feature.type.js`.
 
     *¿Por qué?*: Provee de una manera consistente para identificar componentes rápidamente.
 
     *¿Por qué?*: Provee un patrón de coincidencia para tareas automatizadas.
-
-    ```javascript
-    /**
-     * opciones comunes
-     */
-
-    // Controladores
-    avengers.js
-    avengers.controller.js
-    avengersController.js
-
-    // Servicios/Factories
-    logger.js
-    logger.service.js
-    loggerService.js
-    ```
 
     ```javascript
     /**
@@ -182,6 +162,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     // controllers
     avengers.controller.js
+    avengers-detail.controller.js
     avengers.controller.spec.js
 
     // servicios/factories
@@ -321,7 +302,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ###### [Style [Y001](#style-y001)]
 
   - Define 1 componente por archivo.
-    
+
     *¿Por qué?*: Un componente por archivo promueve pruebas unitarias más fáciles.
 
     *¿Por qué?*: Un componente por archivo hace que sea mucho más fácil de leer, mantener, y evita colisiones con los equipos en el control de código.

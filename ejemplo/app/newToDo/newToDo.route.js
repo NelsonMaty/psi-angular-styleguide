@@ -9,7 +9,7 @@
       .state('new', {
         url: "/new",
         templateUrl: "app/newToDo/newToDo.view.html",
-        controller: 'newController',
+        controller: 'NewController',
         controllerAs: 'vm',
         title: 'Nueva tarea'
       });

@@ -2,7 +2,7 @@
 
     angular
         .module('app.viewToDo')
-        .controller('viewController', viewController);
+        .controller('ViewController', viewController);
 
     viewController.$inject = ['datafactory', '$state'];
 

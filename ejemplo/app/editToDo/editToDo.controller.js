@@ -3,7 +3,7 @@
 
     angular
         .module('app.editToDo')
-        .controller('editController', Controller);
+        .controller('EditController', Controller);
 
     Controller.$inject = ['datafactory', '$state','$stateParams'];
 
