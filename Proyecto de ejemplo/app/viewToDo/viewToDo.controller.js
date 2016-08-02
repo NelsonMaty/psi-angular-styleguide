@@ -10,9 +10,9 @@
     function viewController(datafactory, $state) {
         var vm = this;
 
-        vm.toDos = [];
-        vm.markAsDone = markAsDone;
         vm.editToDo = editToDo;
+        vm.markAsDone = markAsDone;
+        vm.toDos = [];
 
         activate();
 

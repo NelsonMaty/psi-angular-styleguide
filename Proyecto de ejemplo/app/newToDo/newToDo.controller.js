@@ -9,10 +9,13 @@
 
     /* @ngInject */
     function Controller(datafactory, $state) {
+
         var vm = this;
-        vm.toDo = null;
+
         vm.colors = null;
         vm.save = save;
+        vm.toDo = null;
+
         activate();
 
         ////////////////////
