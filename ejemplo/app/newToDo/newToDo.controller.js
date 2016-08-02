@@ -3,12 +3,12 @@
 
     angular
         .module('app.newToDo')
-        .controller('NewController', Controller);
+        .controller('NewController', NewController);
 
-    Controller.$inject = ['datafactory','$state'];
+    NewController.$inject = ['datafactory','$state'];
 
     /* @ngInject */
-    function Controller(datafactory, $state) {
+    function NewController(datafactory, $state) {
 
         var vm = this;
 

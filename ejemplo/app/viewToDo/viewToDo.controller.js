@@ -2,12 +2,12 @@
 
     angular
         .module('app.viewToDo')
-        .controller('ViewController', viewController);
+        .controller('ViewController', ViewController);
 
-    viewController.$inject = ['datafactory', '$state'];
+    ViewController.$inject = ['datafactory', '$state'];
 
     /* @ngInject */
-    function viewController(datafactory, $state) {
+    function ViewController(datafactory, $state) {
         var vm = this;
 
         vm.editToDo = editToDo;

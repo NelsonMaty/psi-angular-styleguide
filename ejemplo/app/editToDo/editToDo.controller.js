@@ -3,12 +3,12 @@
 
     angular
         .module('app.editToDo')
-        .controller('EditController', Controller);
+        .controller('EditController', EditController);
 
-    Controller.$inject = ['datafactory', '$state','$stateParams'];
+    EditController.$inject = ['datafactory', '$state','$stateParams'];
 
     /* @ngInject */
-    function Controller(datafactory, $state, $stateParams) {
+    function EditController(datafactory, $state, $stateParams) {
 
         var vm = this;
 
