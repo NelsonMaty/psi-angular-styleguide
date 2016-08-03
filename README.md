@@ -1291,49 +1291,18 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Limitadas a 1 Por Archivo
 ###### [Style [Y070](#style-y070)]
 
-  - Crea una directiva por archivo. Llama al archivo como la directiva.
+  - Crea una directiva por archivo. Nombrar el archivo como la directiva.
 
-    *¿Por qué?*: Es muy fácil colocar todas las directivas en un archivo, pero será más difícil de partir para ser compartida entre aplicaciones, módulos o para un simple módulo.
+    *¿Por qué?*: Es más de compartir entre aplicaciones y módulos.
 
     *¿Por qué?*: Una directiva por archivo es fácil de mantener.
 
   ```javascript
-  /* evitar */
-  /* directives.js */
-
-  angular
-      .module('app.widgets')
-
-      /* directiva de órdenes que es específica del módulo de órdenes*/
-      .directive('orderCalendarRange', orderCalendarRange)
-
-      /* directiva de ventas que puede ser usada en algún otro lado a lo
-      largo de la aplicación de ventas */
-      .directive('salesCustomerInfo', salesCustomerInfo)
-
-      /* directiva de spinner que puede ser usada a lo largo de las
-      aplicaciones */
-      .directive('sharedSpinner', sharedSpinner);
-
-  function orderCalendarRange() {
-      /* detalles de implementación */
-  }
-
-  function salesCustomerInfo() {
-      /* detalles de implementación */
-  }
-
-  function sharedSpinner() {
-      /* detalles de implementación */
-  }
-  ```
-
-  ```javascript
   /* recomendado */
-  /* calendarRange.directive.js */
+  /* calendar-range.directive.js */
 
   /**
-   * @desc directiva de órdenes que es específica al módulo de órdenes en la compañía Acme
+   * @desc directiva disponible para el módulo order
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1347,10 +1316,10 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
   ```javascript
   /* recomendado */
-  /* customerInfo.directive.js */
+  /* customer-info.directive.js */
 
   /**
-   * @desc directiva de ventas que puede ser usada a lo largo de la aplicación de ventas en la compañía Acme
+   * @desc directiva disponilbe para la aplicación completa
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1361,25 +1330,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
       /* detalles de implementación */
   }
   ```
-
-  ```javascript
-  /* recomendado */
-  /* spinner.directive.js */
-
-  /**
-   * @desc directiva de spinner que puede ser usada a lo largo de las aplicaciones en la compañía Acme
-   * @example <div acme-shared-spinner></div>
-   */
-  angular
-      .module('shared.widgets')
-      .directive('acmeSharedSpinner', sharedSpinner);
-
-  function sharedSpinner() {
-      /* detalles de implementación */
-  }
-  ```
-
-    Nota: Hay muchas formas de llamar a las directivas, especialmente cuando pueden ser usadas en ámbitos específicos. Elige un nombre que tenga sentido para la directiva y que su archivo sea distintivo y claro. Hemos visto algunos ejemplos antes, pero veremos más en la sección de cómo nombrar.
 
 ### Manipula el DOM en una Directiva
 ###### [Style [Y072](#style-y072)]
@@ -1406,36 +1356,12 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: Mientras permitamos que una directiva sea usada como una clase, si esa directiva realmente está actuando como un elemento, tiene sentido que sea un elemento, o al menos un atributo.
 
-    Nota: En Angular 1.3+ EA es el valor por defecto
-
-  ```html
-  <!-- evitar -->
-  <div class="my-calendar-range"></div>
-  ```
-
-  ```javascript
-  /* evitar */
-  angular
-      .module('app.widgets')
-      .directive('myCalendarRange', myCalendarRange);
-
-  function myCalendarRange() {
-      var directive = {
-          link: link,
-          templateUrl: '/template/is/located/here.html',
-          restrict: 'C'
-      };
-      return directive;
-
-      function link(scope, element, attrs) {
-        /* */
-      }
-  }
-  ```
+    Nota: En Angular 1.3+ EA es el valor por defecto.
 
   ```html
   <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
+
   <div my-calendar-range></div>
   ```
 
@@ -1443,9 +1369,9 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   /* recomendado */
   angular
       .module('app.widgets')
-      .directive('myCalendarRange', myCalendarRange);
+      .directive('uncCalendarRange', calendarRange);
 
-  function myCalendarRange() {
+  function calendarRange() {
       var directive = {
           link: link,
           templateUrl: '/template/is/located/here.html',
@@ -1462,24 +1388,24 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Directivas y ControllerAs
 ###### [Style [Y075](#style-y075)]
 
-  - Usa la sintaxis `controller as` con una directiva para ser consistente con el uso de `controller as` con los pares de vista y controlador.
+  - En una directiva utiliza la sintaxis `controller as` para ser consistente con el uso de `controller as` entre las vistas y controladores.
 
     *¿Por qué?*: Tiene sentido y no es difícil.
 
-    Nota: La siguiente directiva demuestra algunas de las formas en las que puedes usar el scope dentro del link y el controlador de una directiva, usando controllerAs. He puesto la template para dejarlo todo en un lugar.
+    Nota: La siguiente directiva demuestra algunas de las formas en las que puedes usar el scope dentro del link y el controlador de una directiva, usando controllerAs.
 
     Nota: En cuanto a la inyección de dependencias, mira [Identificar Dependencias Manualmente](#manual-annotating-for-dependency-injection).
 
     Nota: Nótese que el controlador de la directiva está fuera del closure de la directiva. Este estilo elimina los problemas que genera la inyección de dependencias donde la inyección es creada en un código no alcanzable después del `return`.
 
   ```html
-  <div my-example max="77"></div>
+  <div unc-my-example max="77"></div>
   ```
 
   ```javascript
   angular
       .module('app')
-      .directive('myExample', myExample);
+      .directive('uncMyExample', myExample);
 
   function myExample() {
       var directive = {
@@ -1491,7 +1417,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
           link: linkFunc,
           controller: ExampleController,
             controllerAs: 'vm',
-            bindToController: true // porque el scope is aislado
+            bindToController: true // porque el scope se encuentra aislado
         };
 
       return directive;
@@ -1535,13 +1461,13 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     Nota: `bindToController` fue introducido en Angular 1.3.0.
 
   ```html
-  <div my-example max="77"></div>
+  <div unc-my-example max="77"></div>
   ```
 
   ```javascript
   angular
       .module('app')
-      .directive('myExample', myExample);
+      .directive('uncMyExample', myExample);
 
   function myExample() {
       var directive = {
