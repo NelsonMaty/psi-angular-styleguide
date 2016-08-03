@@ -12,7 +12,6 @@
 
         var vm = this;
 
-        vm.colors = null;
         vm.save = save;
         vm.toDo = null;
 
@@ -31,35 +30,6 @@
           if(vm.toDo === null){
             $state.go('view');
           }
-          vm.colors = [
-            {
-              'nombre':'Rojo',
-              'valor': '#FF8A80'
-            },
-            {
-              'nombre':'Naranja',
-              'valor': '#FFD180'
-            },
-            {
-              'nombre':'Verde',
-              'valor': '#CCFF90'
-            },
-            {
-              'nombre':'Amarillo',
-              'valor': '#FFFF8D'
-            },
-            {
-              'nombre':'Gris',
-              'valor': '#CFD8DC'
-            },{
-              'nombre':'Azul',
-              'valor': '#80D8FF'
-            },
-            {
-              'nombre':'Blanco',
-              'valor': '#FFFFFF'
-            }
-          ];
         }
     }
 })();

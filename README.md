@@ -1425,8 +1425,8 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
       function linkFunc(scope, el, attr, ctrl) {
           console.log('LINK: scope.min = %s *** should be undefined', scope.min);
           console.log('LINK: scope.max = %s *** should be undefined', scope.max);
-          console.log('LINK: scope.vm.min = %s', scope.vm.min);
-          console.log('LINK: scope.vm.max = %s', scope.vm.max);
+          console.log('LINK: vm.min = %s', vm.min);
+          console.log('LINK: vm.max = %s', vm.max);
       }
   }
 

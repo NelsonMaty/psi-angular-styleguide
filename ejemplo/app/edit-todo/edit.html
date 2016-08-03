@@ -1,29 +1,3 @@
 <md-content class="md-padding background-gray full-size" layout="row" layout-align='center center '>
-  <md-card flex="45" ng-style="{'background-color' : vm.toDo.color}">
-    <md-card-title>
-      <md-card-title-text>
-        <div layout="row">
-          <md-input-container flex='50'>
-            <label>Título</label>
-            <input ng-model="vm.toDo.titulo">
-          </md-input-container>
-          <md-input-container >
-            <label>Color</label>
-            <md-select ng-model="vm.toDo.color">
-              <md-option ng-repeat="color in vm.colors" value="{{color.valor}}">
-                {{color.nombre}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-        </div>
-        <md-input-container>
-          <label>Descripción</label>
-          <textarea ng-model="vm.toDo.descripcion" md-maxlength="200" rows="5" cols="20" md-select-on-focus></textarea>
-        </md-input-container>
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="vm.save()">Guardar</md-button>
-    </md-card-actions>
-  </md-card>
+  <unc-edit-card todo="vm.toDo" on-save="vm.save"></unc-edit-card>
 </md-content>
