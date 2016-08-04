@@ -12,7 +12,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Estructura de la aplicación: el principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
   1. [Estructura de la aplicación](#estructura-de-la-aplicación)
   1. [Cómo nombrar](#cómo-nombrar)
-  1. [Responsabilidad única](#single-responsibility-o-responsabilidad-única)
+  1. [Single responsibility o responsabilidad única](#single-responsibility-o-responsabilidad-única)
   1. [Modularidad](#modularidad)
   1. [Lógica de arranque](#lógica-de-arranque)
   1. [Automatización de tareas](#automatización-de-tareas)
