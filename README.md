@@ -9,33 +9,33 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 ## Tabla de contenidos
 
-  1. [Estructura de la Aplicación El Principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
-  1. [Estructura de la Aplicación](#estructura-de-la-aplicación)
-  1. [Cómo Nombrar](#cómo-nombrar)
-  1. [Responsabilidad Única](#single-responsibility-o-responsabilidad-Única)
+  1. [Estructura de la aplicación El principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
+  1. [Estructura de la aplicación](#estructura-de-la-aplicación)
+  1. [Cómo nombrar](#cómo-nombrar)
+  1. [Responsabilidad única](#single-responsibility-o-responsabilidad-Única)
   1. [Modularidad](#modularidad)
-  1. [Lógica de Arranque](#lógica-de-arranque)
-  1. [Automatización de Tareas](#automatización-de-tareas)
+  1. [Lógica de arranque](#lógica-de-arranque)
+  1. [Automatización de tareas](#automatización-de-tareas)
   1. [IIFE](#iife)
   1. [Módulos](#módulos)
   1. [Controladores](#controladores)
   1. [Servicios](#servicios)
   1. [Factory](#factory)
-  1. [Servicios de Datos](#servicios-de-datos)
+  1. [Servicios de datos](#servicios-de-datos)
   1. [Directivas](#directivas)
-  1. [Resolviendo Promesas en un Controlador](#resolviendo-promesas-en-un-controlador)
-  1. [Anotación Manual para la Inyección de Dependencias](#anotación-manual-para-la-inyección-de-dependencias)
-  1. [Minificación y Anotación](#minificación-y-anotación)
+  1. [Resolviendo oromesas en un controlador](#resolviendo-promesas-en-un-controlador)
+  1. [Anotación manual para la inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias)
+  1. [Minificación y anotación](#minificación-y-anotación)
   1. [Animaciones](#animaciones)
   1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
   1. [Constantes](#constantes)
-  1. [Plantillas y Snippets](#plantillas-y-snippets)
+  1. [Plantillas y snippets](#plantillas-y-snippets)
   1. [Ruteo](#ruteo)
   1. [Angular Docs](#angular-docs)
 
 
-## Estructura de la Aplicación El Principio LIFT
+## Estructura de la aplicación El principio LIFT
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
@@ -63,14 +63,14 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: Gastas menos tiempo buscando y urgando por código, y es más eficiente. Si esto significa que quieres nombres de archivos más largos, entonces que así sea. Se descriptivo con los nombres de los archivos y mantén el contenido del archivo a exactamente 1 componente. Evita archivos con múltiples controladores, o una mezcla.
 
-### Estructura Plana
+### Estructura plana
 ###### [Style [Y143](#style-y143)]
 
   - Mantén una estructura de directorios tan plana como sea posible. Cuando llegues a un total de 7+ archivos, comienza a considerar separación.
 
     *¿Por qué?*: Nadie quiere buscar en 7 niveles de directorios por un arhivo. En una estructura de directorios no hay una regla dura o rápida en cuanto a un número, pero cuando un directorio tiene de 7 a 10 archivos, tal vez ese sea el momento para empezar a crear subdirectorios. Básate en tu nivel de confort. Usa una estructura más plana hasta que haya un valor obvio (para ayudar al resto de LIFT) en crear un nuevo directorio.
 
-### T-DRY (Try to Stick to DRY - Trata de Apegarte a DRY)
+### T-DRY (Try to Stick to DRY - Trata de apegarte a DRY)
 ###### [Style [Y144](#style-y144)]
 
   - Se DRY, pero no te vuelvas loco y sacrifiques legibilidad.
@@ -79,9 +79,9 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Estructura de la Aplicación
+## Estructura de la aplicación
 
-### Estructura de Carpetas-por-Característica
+### Estructura de carpetas-por-característica
 ###### [Style [Y152](#style-y152)]
 
   - Crea carpetas llamadas de acuerdo a la característica que representan. Cuando una carpeta crezca para contener más de 7 archivos, comienza a considerar la creación de una carpeta para ellos. Tu límite puede ser diferente, así que ajusta de acuerdo a tus necesidades.
@@ -133,7 +133,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Cómo Nombrar
+## Cómo nombrar
 
 ### Pautas para nombrar
 ###### [Style [Y120](#style-y120)]
@@ -146,7 +146,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: Las pautas para nombrar deberían simplemente ayudarte a encontrar tu código rápidamente y hacerlo más fácil de entender.
 
-### Nombres de Archivo para Característica
+### Nombres de archivo para característica
 ###### [Style [Y121](#style-y121)]
 
   - Usa nombres consistentes para todos los componentes siguiendo un patrón que describa la característica del mismo, y después (opcionalmente) su tipo. El patrón recomendado es `feature.type.js`.
@@ -183,7 +183,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     avenger-profile.directive.js
     ```
 
-### Nombres de Controladores
+### Nombres de controladores
 ###### [Style [Y123](#style-y123)]
 
   - Usa nombres consistentes para todos los controladores nombrados a partir de lo que hacen. Usa UpperCamelCase para controladores, ya que son constructores.
@@ -205,7 +205,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     function HeroAvengers() { }
     ```
 
-### Sufijo para el Nombre del Controlador
+### Sufijo para el nombre del controlador
 ###### [Style [Y124](#style-y124)]
 
   - Agrega el sufijo `Controller` al nombre del controlador.
@@ -225,7 +225,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     function AvengersController() { }
     ```
 
-### Nombres de Factory
+### Nombres de factory
 ###### [Style [Y125](#style-y125)]
 
   - Usa nombres consistentes para todas las factorias nombradas a partir de lo que hacen. Usa lowerCamelCase para los servicios y las factories.
@@ -245,7 +245,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     function logger() { }
     ```
 
-### Nombres para Directivas
+### Nombres para directivas
 ###### [Style [Y126](#style-y126)]
 
   - Usa nombres consistentes para todas las directivas usando lowerCamelCase. Usa un prefijo corto para describir el área a la que la directiva pertenece (algunos ejemplos son un prefijo según la compañía o un prefijo según el proyecto).
@@ -294,7 +294,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Single Responsibility o Responsabilidad Única
+## Single responsibility o responsabilidad única
 
 ### La regla del 1
 ###### [Style [Y001](#style-y001)]
@@ -357,21 +357,21 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 ## Modularidad
 
-### Muy Pequeños, Módulos Autocontenidos
+### Muy pequeños, módulos autocontenidos
 ###### [Style [Y160](#style-y160)]
 
   - Crea módulos pequeños que encapsulen una responsabilidad.
 
     *¿Por qué?*: Aplicaciones modulares hace más fácil el plug and go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas características conforme las desarrollamos.
 
-### Crea un Módulo App
+### Crea un módulo app
 ###### [Style [Y161](#style-y161)]
 
   - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
 
     *¿Por qué?*: Angular incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
 
-### Mantén el Módulo App Delgado
+### Mantén el módulo app delgado
 ###### [Style [Y162](#style-y162)]
 
   - Solo coloca lógica para unir la aplicación en el módulo app. Deja las características en sus propios módulos.
@@ -380,14 +380,14 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: El módulo app se convierte en el manifiesto que describe qué módulos definen la aplicación.
 
-### Bloques Reusables son Módulos
+### Bloques reusables son módulos
 ###### [Style [Y164](#style-y164)]
 
   - Crea módulos que representen bloques de la aplicación reusables para servicios cómunes como manejo de excepciones, logeo, diagnóstico, seguridad, y almacenamiento local de datos.
 
     *¿Por qué?*: Este tipo de características son necesarias en muchas aplicaciones, así que mantenerlas separadas en sus propios módulos pueden ser genéricas de aplicación y pueden ser reusadas a lo largo de varias aplicaciones.
 
-### Dependencias de Módulos
+### Dependencias de módulos
 ###### [Style [Y165](#style-y165)]
 
   - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
@@ -406,7 +406,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Lógica de Arranque
+## Lógica de arranque
 
 ### Configuración
 ###### [Style [Y170](#style-y170)]
@@ -441,7 +441,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   ```
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Automatización de Tareas
+## Automatización de tareas
 Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas automatizadas. Gulp deriva a código sobre configuración mientras que Grunt deriva a configuración sobre código.
 
 ###### [Style [Y400](#style-y400)]
@@ -641,7 +641,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## Controladores
 
-### controllerAs Sintaxis en la Vista
+### controllerAs Sintaxis en la vista
 ###### [Style [Y030](#style-y030)]
 
   - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
@@ -666,7 +666,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   </div>
   ```
 
-### controllerAs Sintaxis en el Controlador
+### controllerAs Sintaxis en el vontrolador
 ###### [Style [Y031](#style-y031)]
 
   - Usa la sintaxis `controllerAs` en lugar del `clásico controlador con $scope`.
@@ -724,7 +724,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   var vm = this;
   ```
 
-### Miembros Bindeables Arriba
+### Miembros bindeables arriba
 ###### [Style [Y033](#style-y033)]
 
   - Coloca las asociaciones en la parte superior del controlador, ordenalas alfabéticamente y no las distribuyas a lo largo del código del controlador.
@@ -811,7 +811,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
       vm.title = 'Sessions';
   ```
 
-### Declaraciones de Funciones para Esconder los Detalles de Implementación
+### Declaraciones de funciones para esconder los detalles de implementación
 ###### [Style [Y034](#style-y034)]
 
   - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros Bindeables Arriba. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
@@ -886,7 +886,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-### Diferir la Lógica del Controlador
+### Diferir la lógica del controlador
 ###### [Style [Y035](#style-y035)]
 
   - Difiera la lógica dentro de un controlador delegándola a servicios y factories.
@@ -944,7 +944,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-### Mantén tus Controladores Enfocados
+### Mantén tus controladores enfocados
 ###### [Style [Y037](#style-y037)]
 
   - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factories y deja el controlador simple y enfocado en su vista.
@@ -994,7 +994,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## Factory
 
-### Responsabilidad Única
+### Responsabilidad única
 ###### [Style [Y050](#style-y050)]
 
   - Las factories deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factory empiece a exceder el principio de responsabilidad única, una nueva factory debe ser creada.
@@ -1006,7 +1006,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services).
 
-### Miembros accesibles Arriba
+### Miembros accesibles arriba
 ###### [Style [Y052](#style-y052)]
 
   - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
@@ -1062,7 +1062,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   De esta forma se asocian los bindeos desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
 
 
-### Declaración de Funciones para Esconder los Detalles de Implementación
+### Declaración de funciones para esconder los detalles de implementación
 ###### [Style [Y053](#style-y053)]
 
   - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factory. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
@@ -1162,7 +1162,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Servicios de Datos
+## Servicios de datos
 
 ### Separate Data Calls
 ###### [Style [Y060](#style-y060)]
@@ -1240,7 +1240,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-### Regresa una Promesa desde las Llamadas a Datos
+### Regresa una promesa desde las llamadas a datos
 ###### [Style [Y061](#style-y061)]
 
   - Cuando llamamos a servicios de datos que devuelven una promesa como $http, devuelve una promesa en la llamada de tu función también.
@@ -1288,7 +1288,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     **[Volver arriba](#tabla-de-contenidos)**
 
 ## Directivas
-### Limitadas a 1 Por Archivo
+### Limitadas a 1 por archivo
 ###### [Style [Y070](#style-y070)]
 
   - Crea una directiva por archivo. Nombrar el archivo como la directiva.
@@ -1331,14 +1331,14 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-### Manipula el DOM en una Directiva
+### Manipula el DOM en una directiva
 ###### [Style [Y072](#style-y072)]
 
   - Cuando manipules DOM directamente, usa una directiva. Si hay alguna alternativa como usando CSS para cambiar los estilos o los [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) o [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), entonces úsalos en su lugar. Por ejemplo, si la directiva sólo muestra o esconde elementos, usa ngHide/ngShow.
 
     *¿Por qué?*: Manipular el DOM puede ser difícil de testear, debugear y normalmente hay mejores maneras (e.g. CSS, animations, templates)
 
-### Provee un Prefijo Único de Directiva
+### Provee un prefijo único de directiva
 ###### [Style [Y073](#style-y073)]
 
   - Proporciona un prefijo corto, único y descriptivo como `acmeSalesCustomerInfo` que se declare en el HTML como `acme-sales-customer-info`.
@@ -1347,7 +1347,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     Nota: Evita `ng-` ya que está reservado para las directivas AngularJS. Estudia sabiamente las directivas usadas para evitar conflictos de nombres, como `ion-` de [Ionic Framework](http://ionicframework.com/).
 
-### Limitate a Elementos y Atributos
+### Limitate a elementos y atributos
 ###### [Style [Y074](#style-y074)]
 
   - Cuando crees directivas que tengan sentido como elemento, restringe `E` (elemento personalizado) y opcionalmente restringe `A` (atributo personalizado). Generalmente, si puede ser su control propio, `E` es apropiado, La pauta general es permitir `EA` pero intenta implementarlo como un elemento cuando sea un elemento único y como un atributo cuando añada mejoras a su propio elemento existente en el DOM.
@@ -1501,9 +1501,9 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Resolviendo Promesas en un Controlador
+## Resolviendo promesas en un controlador
 
-### Promesas de Activación de un Controlador
+### Promesas de activación de un controlador
 ###### [Style [Y080](#style-y080)]
 
   - Resuelve la lógica de inicialización de un controlador en una función `activate`.
@@ -1547,9 +1547,9 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   ```
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Anotación Manual para la Inyección de Dependencias
+## Anotación manual para la inyección de dependencias
 
-### Insegura después de la Minificación
+### Insegura después de la minificación
 ###### [Style [Y090](#style-y090)]
 
   - Evita usar la sintaxis acortada para declarar dependencias sin usar algún método que permita minificación.
@@ -1573,7 +1573,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Identifica Dependencias Manualmente
+### Identifica dependencias manualmente
 ###### [Style [Y091](#style-y091)]
 
   - Usa `$inject` Para identificar manualmente las dependencias de tus componentes AngularJS.
@@ -1648,7 +1648,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     ```
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Minificación y Anotación
+## Minificación y anotación
 
 ### ng-annotate
 ###### [Style [Y100](#style-y100)]
@@ -1747,7 +1747,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: Animaciones sutiles pueden mejorar el rendimiento percibido como una transición de vista.
 
-### Sub Segundos
+### Sub segundos
 ###### [Style [Y211](#style-y211)]
 
   - Usa duraciones cortas para las animaciones. Yo generalmente empiezo con 300ms y ajusto hasta que es apropiado.
@@ -1823,7 +1823,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## JS Hint
 
-### Usa un Archivo de Opciones
+### Usa un archivo de opciones
 ###### [Style [Y230](#style-y230)]
 
   - Usa JS Hint para resaltar problemas en tu JavaScript y asegurate de personalizar el arhivo de opciones de JS Hint e incluirlo en el control de versiones. Ve los [JS Hint docs](http://www.jshint.com/docs/) para detalles sobre estas opciones.
@@ -1900,7 +1900,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## Constantes
 
-### Globales de Vendor
+### Globales de vendor
 ###### [Style [Y241](#style-y241)]
 
   - Usa constantes para valores que no cambian y no vienen de otro servicio. Cuando las constantes son usadas solo por para un módulo que pueda ser reutilizado en múltiples aplicaciones, coloca las constantes en un archivo por módulo nombrado a partir del módulo. Hasta que esto sea requerido, mantén las constantes en el módulo principal en un archivo `constants.js`.
@@ -1928,7 +1928,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 **[Volver arriba](#tabla-de-contenidos)**
 
-## Plantillas y Snippets
+## Plantillas y snippets
 Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones. Aquí hay plantillas y/o snippets para algunos de los editores de desarrollo web e IDEs.
 
 ### Sublime Text
