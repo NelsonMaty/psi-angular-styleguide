@@ -9,10 +9,10 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
 ## Tabla de contenidos
 
-  1. [Estructura de la aplicación El principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
+  1. [Estructura de la aplicación: el principio LIFT](#estructura-de-la-aplicación-el-principio-lift)
   1. [Estructura de la aplicación](#estructura-de-la-aplicación)
   1. [Cómo nombrar](#cómo-nombrar)
-  1. [Responsabilidad única](#single-responsibility-o-responsabilidad-Única)
+  1. [Responsabilidad única](#single-responsibility-o-responsabilidad-única)
   1. [Modularidad](#modularidad)
   1. [Lógica de arranque](#lógica-de-arranque)
   1. [Automatización de tareas](#automatización-de-tareas)
@@ -23,7 +23,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Factory](#factory)
   1. [Servicios de datos](#servicios-de-datos)
   1. [Directivas](#directivas)
-  1. [Resolviendo oromesas en un controlador](#resolviendo-promesas-en-un-controlador)
+  1. [Resolviendo promesas en un controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación manual para la inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Minificación y anotación](#minificación-y-anotación)
   1. [Animaciones](#animaciones)
@@ -35,7 +35,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Angular Docs](#angular-docs)
 
 
-## Estructura de la aplicación El principio LIFT
+## Estructura de la aplicación: el principio LIFT
 ### LIFT
 ###### [Style [Y140](#style-y140)]
 
@@ -1288,7 +1288,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     **[Volver arriba](#tabla-de-contenidos)**
 
 ## Directivas
-### Limitadas a 1 por archivo
+### Limita a una directiva por archivo
 ###### [Style [Y070](#style-y070)]
 
   - Crea una directiva por archivo. Nombrar el archivo como la directiva.
