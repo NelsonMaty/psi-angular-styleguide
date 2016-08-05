@@ -5,7 +5,7 @@
         .module('ejemplo.services')
         .factory('ejemploFactory', ejemploFactory);
 
-    // dataFactory.$inject = [];
+    ejemploFactory.$inject = [];
 
     /* @ngInject */
     function ejemploFactory() {

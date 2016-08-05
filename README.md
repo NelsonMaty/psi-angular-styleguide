@@ -379,13 +379,11 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Dependencias de módulos
 ###### [Style [Y165](#style-y165)]
 
-  - El módulo raíz de la aplicación depende de módulos de características específicas y cualquier módulo compartido o reusable.
+  - El módulo raíz de la aplicación importa todos los sub módulos de características específicas y los módulos compartidos o reusables.
 
-    *¿Por qué?*: El módulo principal de la aplicación contiene un manifiesto rápidamente identificable de las características de la aplicación.
+    *¿Por qué?*: El módulo principal de la aplicación permite rápidamente identificar las características de la aplicación.
 
-    *¿Por qué?*: Cada área de características contiene un manifiesto de lo que depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
-
-    *¿Por qué?*: Características internas de la aplicación como servicios de datos compartidos se hacen fácil de localizar y compartir desde `app.core` (elije tu nombre favorito para este módulo).
+    *¿Por qué?*: Cada sub módulo indica de quien depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
 
 **[Volver arriba](#tabla-de-contenidos)**
 

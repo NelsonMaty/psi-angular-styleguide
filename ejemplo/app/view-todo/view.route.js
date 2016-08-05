@@ -3,6 +3,8 @@
     .module('ejemplo.viewToDo')
     .config(config);
 
+    config.$inject = ['$stateProvider']; 
+
     function config($stateProvider) {
 
       $stateProvider

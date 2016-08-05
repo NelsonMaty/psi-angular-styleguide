@@ -4,6 +4,7 @@
     .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    
     function config($stateProvider, $urlRouterProvider) {
     //   For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/view");
