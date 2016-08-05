@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('ejemplo.core')
-        .factory('dataFactory', dataFactory);
+        .module('ejemplo.services')
+        .factory('ejemploFactory', ejemploFactory);
 
     // dataFactory.$inject = [];
 
     /* @ngInject */
-    function dataFactory() {
+    function ejemploFactory() {
 
         var todos = [];
 

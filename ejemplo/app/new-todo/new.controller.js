@@ -5,10 +5,10 @@
         .module('ejemplo.newToDo')
         .controller('NewController', NewController);
 
-    NewController.$inject = ['dataFactory','$state'];
+    NewController.$inject = ['ejemploFactory','$state'];
 
     /* @ngInject */
-    function NewController(datafactory, $state) {
+    function NewController(ejemploFactory, $state) {
 
         var vm = this;
 
@@ -21,7 +21,7 @@
         ////////////////////
 
         function save() {
-          datafactory.saveToDo(vm.toDo);
+          ejemploFactory.saveToDo(vm.toDo);
           //TODO usar promesa y redirigir en then()
           $state.go('view');
         }

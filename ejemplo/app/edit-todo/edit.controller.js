@@ -5,10 +5,10 @@
         .module('ejemplo.editToDo')
         .controller('EditController', EditController);
 
-    EditController.$inject = ['dataFactory', '$state','$stateParams'];
+    EditController.$inject = ['ejemploFactory', '$state','$stateParams'];
 
     /* @ngInject */
-    function EditController(datafactory, $state, $stateParams) {
+    function EditController(ejemploFactory, $state, $stateParams) {
 
         var vm = this;
 
@@ -20,13 +20,13 @@
         ////////////////////
 
         function save() {
-          datafactory.updateToDo(vm.toDo);
+          ejemploFactory.updateToDo(vm.toDo);
           //TODO usar promesa y redirigir en then()
           $state.go('view');
         }
 
         function activate() {
-          vm.toDo = datafactory.getToDoById($stateParams.toDoId);
+          vm.toDo = ejemploFactory.getToDoById($stateParams.toDoId);
           if(vm.toDo === null){
             $state.go('view');
           }

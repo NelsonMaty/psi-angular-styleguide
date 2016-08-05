@@ -4,10 +4,10 @@
         .module('ejemplo.viewToDo')
         .controller('ViewController', ViewController);
 
-    ViewController.$inject = ['dataFactory', '$state'];
+    ViewController.$inject = ['ejemploFactory', '$state'];
 
     /* @ngInject */
-    function ViewController(datafactory, $state) {
+    function ViewController(ejemploFactory, $state) {
         var vm = this;
 
         vm.editToDo = editToDo;
@@ -23,12 +23,12 @@
         }
 
         function getToDos() {
-          return datafactory.getToDos();
+          return ejemploFactory.getToDos();
         }
 
         function markAsDone (task){
           console.log(task);
-          datafactory.markAsDone(task.id);
+          ejemploFactory.markAsDone(task.id);
         }
 
         function editToDo(task) {
