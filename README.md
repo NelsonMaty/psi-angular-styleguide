@@ -162,6 +162,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     // servicios/factories
     logger.service.js
+    logger.factory.js
 
     // constantes
     constants.js
@@ -286,7 +287,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Rutas
 ###### [Style [Y129](#style-y129)]
 
-  - Separa la configuración de la ruta en un archivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas prefiero esta separación del resto de la configuración.
+  - Separa la configuración de la ruta en un archivo propio. Algunos ejemplos pueden ser `app.route.js` para el módulo principal y `admin.route.js`  para el módulo admin `admin`. Incluso en aplicaciones pequeñas es preferible esta separación del resto de la configuración.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -363,7 +364,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 ### Crea un módulo app
 ###### [Style [Y161](#style-y161)]
 
-  - Crea una módulo raíz de aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
+  - Crea un módulo raíz de la aplicación cuyo rol sea unir todos los módulos y características de tu aplicación. Nombra éste de acuerdo a tu aplicación.
 
     *¿Por qué?*: Angular incentiva la modularidad y patrones de separación. Crear un módulo raíz de aplicación cuyo rol es atar otros módulos juntos provee una manera muy directa de agregar o remover módulos de tu aplicación.
 
