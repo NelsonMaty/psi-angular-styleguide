@@ -162,7 +162,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     // servicios/factories
     logger.service.js
-    logger.factory.js
+    data.factory.js
 
     // constantes
     constants.js
@@ -359,7 +359,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   - Crea módulos pequeños que encapsulen una responsabilidad.
 
-    *¿Por qué?*: Aplicaciones modulares hace más fácil el plug and go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas características conforme las desarrollamos.
+    *¿Por qué?*: Aplicaciones modulares hacen más fácil el plug-and-go ya que permiten a los equipos de desarrollo construir porciones verticales de la aplicación y lanzarlas incrementalmente. Esto significa que podemos conectar nuevas características conforme las desarrollamos.
 
 ### Crea un módulo app
 ###### [Style [Y161](#style-y161)]
@@ -394,12 +394,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
     *¿Por qué?*: Cada área de características contiene un manifiesto de lo que depende, así que puede ser extraído como dependencia en otras aplicaciones y seguir funcionando.
 
     *¿Por qué?*: Características internas de la aplicación como servicios de datos compartidos se hacen fácil de localizar y compartir desde `app.core` (elije tu nombre favorito para este módulo).
-
-    Nota: Esta es una estrategia para consistencia. Hay muy buenas opciones aquí. Escoge una que sea consistente, que siga las reglas de dependencias de AngularJS, y que sea fácil de mantener y escalar.
-
-    > Mis estructuras varían ligeramente entre proyectos pero todas ellas siguen estas pautas para estructuras y modularidad. La implementación puede variar dependiendo de las características y el equipo. En otras palabras, no te quedes colgado en una estructura igual pero justifica tu estructura usando consistencia, mantenibilidad, y eficacia en mente.
-
-    > En una aplicación pequeña, también puedes considerar poner todas las dependencias compartidas en el módulo principal dónde los módulos de características no tienen dependencias directas. Esto hace más fácil mantener aplicaciones pequeñas, pero hace más difícil el reusar módulos fuera de esta aplicación.
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -465,7 +459,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Closures de JavaScript
 ###### [Style [Y010](#style-y010)]
 
-  - Envuelve los componentes Angular en una expresión de función que se invoca inmediatamente Immediately Invoked Function Expression (IIFE).
+  - Envuelve los componentes Angular en una expresión de función que se invoca inmediatamente: Immediately Invoked Function Expression (IIFE).
 
   *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
 
@@ -520,8 +514,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   })();
   ```
 
-  - Nota: Para acortar únicamente, el resto de los ejemplos de esta guía podrían omitir la sintaxis IIFE.
-
   - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia fábrica.
 
 **[Volver arriba](#tabla-de-contenidos)**
@@ -535,7 +527,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
   *¿Por qué?*: Nombres únicos ayudan a evitar colisiones en los nombres de módulos. Los separadores ayudan a definir los módulos y la jerarquía de sus sub-módulos. Por ejemplo `app` puede ser tu módulo raíz y `app.dashboard` y `app.users` pueden ser módulos que dependen de `app`.
 
-### Definiciones (aka Setters)
+### Definiciones (Setters)
 ###### [Style [Y021](#style-y021)]
 
   - Declara los módulos sin usar una variable, usando la sintaxis de los setters.
@@ -647,7 +639,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
   *¿Por qué?*: Promueves el uso de binding usando el "." en el objeto dentro de la Vista (ej. `customer.name` en lugar de `name`), así es más contextual, fácil de leer y evitas problemas de referencia que pueden aparecer con el "punto".
 
-  *¿Por qué?*: Ayuda a evitar usar `$parent` en las Vistas con controladores anidados.
+  *¿Por qué?*: Ayuda a evitar usar `$parent` en las vistas con controladores anidados.
 
   ```html
   <!-- evitar -->
@@ -663,7 +655,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   </div>
   ```
 
-### controllerAs Sintaxis en el vontrolador
+### controllerAs Sintaxis en el controlador
 ###### [Style [Y031](#style-y031)]
 
   - Usa la sintaxis `controllerAs` en lugar del `clásico controlador con $scope`.
