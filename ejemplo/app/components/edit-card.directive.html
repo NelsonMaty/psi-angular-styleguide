@@ -6,7 +6,7 @@
           <label>Título</label>
           <input ng-model="vm.todo.titulo">
         </md-input-container>
-        <md-input-container >
+        <md-input-container>
           <label>Color</label>
           <md-select ng-model="vm.todo.color">
             <md-option ng-repeat="color in vm.colors" value="{{color.valor}}">
@@ -17,11 +17,11 @@
       </div>
       <md-input-container>
         <label>Descripción</label>
-        <textarea ng-model="vm.todo.descripcion" md-maxlength="200" rows="5" cols="20" md-select-on-focus></textarea>
+        <textarea ng-model="vm.todo.descripcion" md-maxlength="200" rows="5" md-select-on-focus></textarea>
       </md-input-container>
     </md-card-title-text>
   </md-card-title>
   <md-card-actions layout="row" layout-align="end center">
-    <md-button ng-click="vm.save()">Guardar</md-button>
+    <md-button ng-click="vm.onSave()">Guardar</md-button>
   </md-card-actions>
 </md-card>

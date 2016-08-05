@@ -23,7 +23,6 @@
         return directive;
 
         function linkFunc(scope, el, attr, ctrl) {
-          console.log(scope.vm.todo);
         }
     }
 

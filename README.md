@@ -112,17 +112,13 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
             topnav.html
             topnav.controller.js
         people/
+            people.factory.js
             attendees.html
             attendees.controller.js
             speakers.html
             speakers.controller.js
             speaker-detail.html
             speaker-detail.controller.js
-        services/
-            data.service.js
-            localstorage.service.js
-            logger.service.js
-            spinner.service.js
         sessions/
             sessions.html
             sessions.controller.js
