@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.core')
+        .module('ejemplo.core')
         .factory('dataFactory', dataFactory);
 
     // dataFactory.$inject = [];

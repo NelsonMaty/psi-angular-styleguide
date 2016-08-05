@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.viewToDo')
+        .module('ejemplo.viewToDo')
         .filter('isDone', filter);
 
     function filter() {

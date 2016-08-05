@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('app.newToDo')
+    .module('ejemplo.newToDo')
     .config(config);
 
     function config($stateProvider) {

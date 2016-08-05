@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.components')
+        .module('ejemplo.components')
         .directive('uncEditCard', editCard);
 
     /* @ngInject */

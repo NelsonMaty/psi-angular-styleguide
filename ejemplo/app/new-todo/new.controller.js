@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.newToDo')
+        .module('ejemplo.newToDo')
         .controller('NewController', NewController);
 
     NewController.$inject = ['dataFactory','$state'];

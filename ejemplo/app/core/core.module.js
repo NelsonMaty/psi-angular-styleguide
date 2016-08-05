@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('app.core', ['ui.router', 'ngMaterial']);
+        .module('ejemplo.core', ['ui.router', 'ngMaterial']);
 })();

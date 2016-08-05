@@ -306,19 +306,7 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
   El siguiente ejemplo define el módulo `app` y sus dependencias, define un controlador, y defines una fábrica todo en el mismo archivo.
 
-  ```javascript
-  /* evitar */
-  angular
-      .module('app', ['ngRoute'])
-      .controller('SomeController', SomeController)
-      .factory('someFactory', someFactory);
-
-  function SomeController() { }
-
-  function someFactory() { }
-  ```
-
-  Los mismos componentes están separados en su propio archivo.
+  Los componentes están separados en su propio archivo.
 
   ```javascript
   /* recomendado */

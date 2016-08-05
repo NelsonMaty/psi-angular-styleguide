@@ -1,11 +1,11 @@
 (function() {
   'use strict';
-    angular.module('app', [
+    angular.module('ejemplo', [
 
-      'app.core',
-      'app.components',
-      'app.editToDo',
-      'app.newToDo',
-      'app.viewToDo'
+      'ejemplo.core',
+      'ejemplo.components',
+      'ejemplo.editToDo',
+      'ejemplo.newToDo',
+      'ejemplo.viewToDo'
     ]);
 }());

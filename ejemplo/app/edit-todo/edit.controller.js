@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.editToDo')
+        .module('ejemplo.editToDo')
         .controller('EditController', EditController);
 
     EditController.$inject = ['dataFactory', '$state','$stateParams'];

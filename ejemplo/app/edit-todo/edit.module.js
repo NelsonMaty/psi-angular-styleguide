@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  angular.module('app.editToDo', ['app.core']);
+  angular.module('ejemplo.editToDo', ['ejemplo.core']);
 }());

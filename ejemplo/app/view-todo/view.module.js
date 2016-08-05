@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  angular.module('app.viewToDo', ['app.core']);
+  angular.module('ejemplo.viewToDo', ['ejemplo.core']);
 }());
