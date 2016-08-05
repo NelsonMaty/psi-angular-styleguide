@@ -396,30 +396,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
 
     *¿Por qué?*: Esto hace más fácil tener menos lugares para la configuración.
 
-  ```javascript
-  angular
-      .module('app')
-      .config(configure);
-
-  configure.$inject =
-      ['routerHelperProvider', 'exceptionHandlerProvider', 'toastr'];
-
-  function configure (routerHelperProvider, exceptionHandlerProvider, toastr) {
-      exceptionHandlerProvider.configure(config.appErrorPrefix);
-      configureStateHelper();
-
-      toastr.options.timeOut = 4000;
-      toastr.options.positionClass = 'toast-bottom-right';
-
-      ////////////////
-
-      function configureStateHelper() {
-          routerHelperProvider.configure({
-              docTitle: 'NG-Modular: '
-          });
-      }
-  }
-  ```
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Automatización de tareas
@@ -431,7 +407,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: Angular necesita la definición de módulos para ser registrados antes de que sean usados.
 
-    *¿Por qué?*: Nombra módulos con un patrón específico como `*.module.js` hace más fácil tomarlos con un glob y listarlos primero.
+    *¿Por qué?*: Nombra módulos con un patrón específico como `*.module.js` hace más fácil manipularlos.
 
     ```javascript
     var clientApp = './src/client/app/';
@@ -453,26 +429,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
   *¿Por qué?*: Una IIFE elimina las variables del scope global. Esto ayuda a prevenir que las variables y las declaraciones de funciones vivan más de lo esperado en el scope global, evitando así colisión de variables.
 
-  *¿Por qué?*: Cuando tu código se minimiza y se empaqueta en un archivo único para desplegar al servidor de producción, podrías tener colisión de variables y muchas variables globales. Una IIFE te protege contra ambos, creando una scope por cada archivo.
-
-  ```javascript
-  /* evitar */
-  // logger.js
-  angular
-      .module('app')
-      .factory('logger', logger);
-
-  // La función logger es añadida como variable global
-  function logger() { }
-
-  // storage.js
-  angular
-      .module('app')
-      .factory('storage', storage);
-
-  // la función storage es añadida como variable global
-  function storage() { }
-  ```
+  *¿Por qué?*: Cuando tu código se minimiza y se empaqueta en un archivo único para desplegar al servidor de producción, podrías tener colisión de variables y muchas variables globales. Una IIFE te protege contra ambos, creando un scope por cada archivo.
 
   ```javascript
   /**
@@ -503,9 +460,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
       function storage() { }
   })();
   ```
-
-  - Nota: IIFE previente que el código de los tests llegue a sus variables privadas, como expresiones regulares o funciones de ayuda que normalmente vienen bien para hacer pruebas por sí solas. Sin embargo, puedes acceder a ellas creando accesorios o accediendo a través de sus componentes. Por ejemplo, poniendo las funciones de ayuda, expresiones regulares o constantes en su propia fábrica.
-
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Módulos
@@ -620,32 +574,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## Controladores
 
-### controllerAs Sintaxis en la vista
-###### [Style [Y030](#style-y030)]
-
-  - Usa la sintaxis [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) en lugar del `clásico controlador con $scope`.
-
-  *¿Por qué?*: Los Controladores se construyen, renuevan y proporcionan una nueva instancia única, y la sintaxis `controllerAs` se acerca más a eso que la `sintaxis clásica de $scope`.
-
-  *¿Por qué?*: Promueves el uso de binding usando el "." en el objeto dentro de la Vista (ej. `customer.name` en lugar de `name`), así es más contextual, fácil de leer y evitas problemas de referencia que pueden aparecer con el "punto".
-
-  *¿Por qué?*: Ayuda a evitar usar `$parent` en las vistas con controladores anidados.
-
-  ```html
-  <!-- evitar -->
-  <div ng-controller="Customer">
-      {{ name }}
-  </div>
-  ```
-
-  ```html
-  <!-- recomendado -->
-  <div ng-controller="Customer as customer">
-      {{ customer.name }}
-  </div>
-  ```
-
-### controllerAs Sintaxis en el controlador
+### Sintaxis controllerAs
 ###### [Style [Y031](#style-y031)]
 
   - Usa la sintaxis `controllerAs` en lugar del `clásico controlador con $scope`.
@@ -696,39 +625,14 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-  Nota: Puedes evitar los warnings de [jshint](http://www.jshint.com/) escribiendo un comentario encima de la línea de código. Sin embargo no hace falta si el nombre de la función empieza con mayúsculas, ya que esa es la convención para las funciones de los constructores, que es lo que un controller en Angular es.
-
-  ```javascript
-  /* jshint validthis: true */
-  var vm = this;
-  ```
-
 ### Miembros bindeables arriba
 ###### [Style [Y033](#style-y033)]
 
-  - Coloca las asociaciones en la parte superior del controlador, ordenalas alfabéticamente y no las distribuyas a lo largo del código del controlador.
+  - Coloca las variables bindeables en la parte superior del controlador, ordenalas alfabéticamente y no las distribuyas a lo largo del código del controlador.
 
     *¿Por qué?*: Colocar las variables asignables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
 
     *¿Por qué?*: Setear funciones anónimas puede ser fácil, pero cuando esas funciones tienen más de una línea de código se hace menos legible. Definir las funciones bajo las variables bindeables (las declaraciones de las funciones serán movidas hacia arriba en el proceso de hoisting), hace que los detalles de implementación estén abajo, deja las variables arriba y más sencilla la lectura.
-
-  ```javascript
-  /* evitar */
-  function Sessions() {
-      var vm = this;
-
-      vm.gotoSession = function() {
-        /* ... */
-      };
-      vm.refresh = function() {
-        /* ... */
-      };
-      vm.search = function() {
-        /* ... */
-      };
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  ```
 
   ```javascript
   /* recomendado */
@@ -754,40 +658,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
       function search() {
         /* */
       }
-  ```
-
-  Nota: Si la función es de una línea, déjala arriba, siempre y cuando no afecte en la legibilidad.
-
-  ```javascript
-  /* evitar */
-  function Sessions(data) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = function() {
-          /**
-           * líneas
-           * de
-           * código
-           * que afectan a
-           * la legibilidad
-           */
-      };
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
-  ```
-
-  ```javascript
-  /* recomendado */
-  function Sessions(dataservice) {
-      var vm = this;
-
-      vm.gotoSession = gotoSession;
-      vm.refresh = dataservice.refresh; // 1 liner is OK
-      vm.search = search;
-      vm.sessions = [];
-      vm.title = 'Sessions';
   ```
 
 ### Declaraciones de funciones para esconder los detalles de implementación
