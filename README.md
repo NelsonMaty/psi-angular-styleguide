@@ -770,13 +770,13 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Miembros accesibles arriba
 ###### [Style [Y052](#style-y052)]
 
-  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica deribada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Expón las variables que se llaman del servicio (su interfaz) arriba, usando la técnica derivada de [Revealing Module Pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
     *¿Por qué?*: Colocar los elementos que se llaman arriba hace más fácil la lectura y te ayuda a identificar los elementos del servicio que se pueden llamar y se deben testear (y/o mockear).
 
-    *¿Por qué?*: Es especialmente útil cuando el archivo se hace más largo, ya que ayuda a evitar el scroll para ver qué se expone.
+    *¿Por qué?*: Es especialmente útil cuando el archivo se hace muy largo, ya que ayuda a evitar el scroll para ver qué se expone.
 
-    *¿Por qué?*: Setear las funciones puede ser fácil, pero cuando tienen más de una línea ser reduce la legibilidad. Definiendo la interfaz mueve los detalles de implementación abajo, mantiene la interfaz que va a ser llamada arriba y lo hace más fácil de leer.
+    *¿Por qué?*: Setear las funciones puede ser fácil, pero cuando tienen más de una línea se reduce la legibilidad. Definiendo la interfaz mueve los detalles de implementación abajo, mantiene la interfaz que va a ser llamada arriba y lo hace más fácil de leer.
 
   ```javascript
   /* evitar */
@@ -820,63 +820,20 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-  De esta forma se asocian los bindeos desde el objeto que lo mantiene, los valores primitivos no se pueden modificar por si solos usando este patrón
-
-
 ### Declaración de funciones para esconder los detalles de implementación
 ###### [Style [Y053](#style-y053)]
 
-  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factory. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para esconder detalles de implementación. Manten los elementos accesibles en la parte superior de la factoria. Referencia a los que aparezcan después en el archivo. Para más detalles visita [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factory se pueden accesar externamente.
+    *¿Por qué?*: Coloca los elementos accesibles en la parte superior para hacerlo más fácil de leer y ayudarte a identificar instantáneamente qué funciones de la factoria se pueden accesar externamente.
 
     *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo mueve esa complejidad fuera de la vista, de esta forma puedes dejar lo importante arriba.
 
-    *¿Por qué?*: Las declaraciones de las funciones son "elevadas" de esta forma no hay problemas en usar una función antes de su definición (como la habría si fueran funciones en forma de expresión).
+    *¿Por qué?*: Las declaraciones de las funciones son movidas arriba por el proceso de "hoisting" de esta forma no hay problemas en usar una función antes de su definición.
 
     *¿Por qué?*: No tendrás que preocuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
     *¿Por qué?*: El orden es crítico para las funciones en forma de expresión
-
-  ```javascript
-  /**
-   * evitar
-   * Usar función como expresión
-   */
-   function dataservice($http, $location, $q, exception, logger) {
-      var isPrimed = false;
-      var primePromise;
-
-      var getAvengers = function() {
-          // detalles de implementación van aquí
-      };
-
-      var getAvengerCount = function() {
-          // detalles de implementación van aquí
-      };
-
-      var getAvengersCast = function() {
-          // detalles de implementación van aquí
-      };
-
-      var prime = function() {
-          // detalles de implementación van aquí
-      };
-
-      var ready = function(nextPromises) {
-          // detalles de implementación van aquí
-      };
-
-      var service = {
-          getAvengersCast: getAvengersCast,
-          getAvengerCount: getAvengerCount,
-          getAvengers: getAvengers,
-          ready: ready
-      };
-
-      return service;
-  }
-  ```
 
   ```javascript
   /**
@@ -928,7 +885,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Separate Data Calls
 ###### [Style [Y060](#style-y060)]
 
-  - Refactoriza la lógica para hacer operaciones e interaciones con datos en una factory. Crear data services responsables de las peticiones XHR, local storage, memoria o cualquier otra operación con datos.
+  - Refactoriza la lógica para hacer operaciones e interaciones con datos en una factoria. Crear data services responsables de las peticiones XHR, local storage, memoria o cualquier otra operación con datos.
 
     *¿Por qué?*: La responsabilidad del controlador es la de presentar y recoger información para la vista. No debe importarle cómo se consiguen los datos, sólo saber cómo conseguirlos. Separando los datos de servicios movemos la lógica de cómo conseguirlos al servicio de datos, y deja el controlador simple, enfocándose en la vista.
 
@@ -939,12 +896,12 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   ```javascript
   /* recomendado */
 
-  // dataservice factory
+  // ejemplo factory
   angular
-      .module('app.core')
-      .factory('dataservice', dataservice);
+      .module('app.services')
+      .factory('ejemploFactory', ejemploFactory);
 
-  dataservice.$inject = ['$http', 'logger'];
+  ejemploFactory.$inject = ['$http', 'logger'];
 
   function dataservice($http, logger) {
       return {
@@ -963,40 +920,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
           function getAvengersFailed(error) {
               logger.error('XHR Failed for getAvengers.' + error.data);
           }
-      }
-  }
-  ```
-
-    Nota: El servicio de datos es llamado desde los consumidores, como el controlador, escondiendo la implementación del consumidor como se muestra a continuación.
-
-  ```javascript
-  /* recomendado */
-
-  // controller llamando a la factory del data service
-  angular
-      .module('app.avengers')
-      .controller('Avengers', Avengers);
-
-  Avengers.$inject = ['dataservice', 'logger'];
-
-  function Avengers(dataservice, logger) {
-      var vm = this;
-      vm.avengers = [];
-
-      activate();
-
-      function activate() {
-          return getAvengers().then(function() {
-              logger.info('Activated Avengers View');
-          });
-      }
-
-      function getAvengers() {
-          return dataservice.getAvengers()
-              .then(function(data) {
-                  vm.avengers = data;
-                  return vm.avengers;
-              });
       }
   }
   ```
