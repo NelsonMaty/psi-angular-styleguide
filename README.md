@@ -1194,21 +1194,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: Colocar la lógica de inicialización en un lugar consistente del controlador lo hace más fácil de localizar, más consistente de testear, y ayuda a evitar que la lógica de activación se propage a lo largo del controlador.
 
-    *¿Por qué?*: El `activate` del controlador hace que la lógica para refrescar el controlador/Vista sea reutilizable, mantiene la lógica junta, lleva el usuario a la Vista más rápido, hace las animaciones más fáciles en `ng-view` o `ui-view` y lo hace más rápido a la vista del usuario.
-
-  ```javascript
-  /* evitar */
-  function Avengers(dataservice) {
-      var vm = this;
-      vm.avengers = [];
-      vm.title = 'Avengers';
-
-      dataservice.getAvengers().then(function(data) {
-          vm.avengers = data;
-          return vm.avengers;
-      });
-  }
-  ```
+    *¿Por qué?*: El `activate` del controlador hace que la lógica para refrescar el controlador/vista sea reutilizable, mantiene la lógica junta, lleva el usuario a la vista más rápido, hace las animaciones más fáciles en `ng-view` o `ui-view` y lo hace más rápido a la vista del usuario.
 
   ```javascript
   /* recomendado */
