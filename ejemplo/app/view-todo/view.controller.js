@@ -19,7 +19,9 @@
         ///////////////////////////////////
 
         function activate(){
-          vm.toDos = getToDos();
+          getToDos().then(function (todos) {
+            vm.toDos = todos;
+          });
         }
 
         function getToDos() {

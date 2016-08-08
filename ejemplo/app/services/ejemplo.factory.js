@@ -106,7 +106,10 @@
         }
 
         function getToDos() {
-          return todos;
+          var promise = new Promise(function (resolve, reject) {
+            resolve(todos);
+          });
+          return promise;
         }
 
         function removeToDo(id) {
