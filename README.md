@@ -669,9 +669,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo deja la complejidad fuera de vista así puedes ver las cosas importantes arriba.
 
-    *¿Por qué?*: La declaración de las funciones son movidas arriba por el
-    proceso de hoisting así que no tenemos que preocuparnos por usar una
-    función antes de que sea definida (como la habría si fueran funciones en forma de expresión)
+    *¿Por qué?*: La declaración de las funciones son movidas arriba por el proceso de hoisting así que no tenemos que preocuparnos por usar una función antes de que sea definida (como si habría si fueran funciones en forma de expresión)
 
     *¿Por qué?*: No tendrás que preocuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
