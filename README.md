@@ -663,7 +663,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Declaración de funciones para esconder los detalles de implementación
 ###### [Style [Y034](#style-y034)]
 
-  - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: [Miembros bindeables arriba](Miembros-bindeables-arriba). Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros bindeables arriba. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
     *¿Por qué?*: Colocar las variables bindeables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
 
