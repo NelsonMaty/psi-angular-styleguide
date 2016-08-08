@@ -1219,7 +1219,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Manejo de excepciones con promesas
 ###### [Style [Y081](#style-y081)]
 
-  - El bloque `chatch` de una promesa debe retornara una promesa rechazada para mantener la excepción en la cadena de promesas.
+  - El bloque `chatch` de una promesa debe retornar una promesa rechazada para mantener la excepción en la cadena de promesas.
 
   - Siempre maneja las excepciones en los servicios/factorias
 
