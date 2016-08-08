@@ -665,44 +665,15 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
   - Declara funciones para ocultar detalles de implementación. Mantén las variables bindeables arriba. Cuando necesites bindear una función a un controlador referencia una función que aparezca después en el archivo. Esto está directamente relacionado con la sección: Miembros bindeables arriba. Para más detalles mira [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *¿Por qué?*: Colocar las variables bindeables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la Vista.
+    *¿Por qué?*: Colocar las variables bindeables arriba hace más fácil la lectura y te ayuda a identificar qué variables del controlador pueden ser asociadas y usadas en la vista.
 
     *¿Por qué?*: Colocar los detalles de implementación de una función al final del archivo deja la complejidad fuera de vista así puedes ver las cosas importantes arriba.
 
-    *¿Por qué?*: La declaración de las funciones son movidas arriba por el proceso de hoisting así que no tenemos que preocuparnos por usar una función antes de que sea definida (como si habría si fueran funciones en forma de expresión)
+    *¿Por qué?*: La declaración de las funciones son movidas arriba por el proceso de hoisting así que no tenemos que preocuparnos por usar una función antes de que sea definida.
 
-    *¿Por qué?*: No tendrás que preocuparte de que si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
+    *¿Por qué?*: No tendrás que preocuparte si pones `var a` antes de `var b` se rompa el código porque `a` dependa de `b`.
 
-    *¿Por qué?*: El orden es crítico para las funciones en forma de expresión
-
-  ```javascript
-  /**
-   * evitar
-   * Using function expressions.
-   */
-  function Avengers(dataservice, logger) {
-      var vm = this;
-      vm.avengers = [];
-      vm.title = 'Avengers';
-
-      var activate = function() {
-          return getAvengers().then(function() {
-              logger.info('Activated Avengers View');
-          });
-      }
-
-      var getAvengers = function() {
-          return dataservice.getAvengers().then(function(data) {
-              vm.avengers = data;
-              return vm.avengers;
-          });
-      }
-
-      vm.getAvengers = getAvengers;
-
-      activate();
-  }
-  ```
+    *¿Por qué?*: El orden es crítico para las funciones en forma de expresión.
 
   ```javascript
   /*
@@ -733,79 +704,22 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
   }
   ```
 
-### Diferir la lógica del controlador
-###### [Style [Y035](#style-y035)]
-
-  - Difiera la lógica dentro de un controlador delegándola a servicios y factories.
-
-    *¿Por qué?*: La lógica podría ser reutilizada por varios controladores cuando la colocas en un servicio y la expones como una función.
-
-    *¿Por qué?*: La lógica en un servicio puede ser aislada en un test unitario, mientras que la lógica de llamadas en un controlador se puede mockear fácilmente.
-
-    *¿Por qué?*: Elimina dependencias y esconde detalles de implementación del controlador.
-
-  ```javascript
-
-  /* evitar */
-  function Order($http, $q, config, userInfo) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.isCreditOk;
-      vm.total = 0;
-
-      function checkCredit() {
-          var settings = {};
-          // Get the credit service base URL from config
-          // Set credit service required headers
-          // Prepare URL query string or data object with request data
-          // Add user-identifying info so service gets the right credit limit for this user.
-          // Use JSONP for this browser if it doesn't support CORS
-          return $http.get(settings)
-              .then(function(data) {
-               // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
-                 vm.isCreditOk = vm.total <= maxRemainingAmount
-              })
-              .catch(function(error) {
-                 // Interpret error
-                 // Cope w/ timeout? retry? try alternate service?
-                 // Re-reject with appropriate error for a user to see
-              });
-      };
-  }
-  ```
-
-  ```javascript
-  /* recomendado */
-  function Order(creditService) {
-      var vm = this;
-      vm.checkCredit = checkCredit;
-      vm.isCreditOk;
-      vm.total = 0;
-
-      function checkCredit() {
-         return creditService.isOrderTotalOk(vm.total)
-      .then(function(isOk) { vm.isCreditOk = isOk; })
-            .catch(showServiceError);
-      };
-  }
-  ```
-
 ### Mantén tus controladores enfocados
 ###### [Style [Y037](#style-y037)]
 
-  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas. En lugar de eso, mueve la lógica que se pueda reutilizar a factories y deja el controlador simple y enfocado en su vista.
+  - Define un controlador para una vista, no intentes reutilizar el controlador para otras vistas.
 
     *¿Por qué?*: Reutilizar controladores con varias vistas es arriesgado y necesitarías buena cobertura de tests end to end (e2e) para asegurar que todo funciona bien en la aplicación.
 
 **[Volver arriba](#tabla-de-contenidos)**
+
 
 ## Servicios
 
 ### Singletons
 ###### [Style [Y040](#style-y040)]
 
-  - Los Servicios son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factory en su lugar por consistencia.
+  - Los servicios son instanciados con un `new`, usan `this` para los métodos públicos y las variables. Ya que son muy similares a las factories, usa una factoria en su lugar por consistencia.
 
     Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services). Esto significa que sólo hay una instancia de un servicio por inyector.
 
@@ -844,12 +758,12 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Responsabilidad única
 ###### [Style [Y050](#style-y050)]
 
-  - Las factories deben tener una [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factory empiece a exceder el principio de responsabilidad única, una nueva factory debe ser creada.
+  - Las factorias deben tener [responsabilidad única](http://en.wikipedia.org/wiki/Single_responsibility_principle), que es encapsulada por su contexto. Cuando una factoria empiece a exceder un único proposito, una nueva debe ser creada.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Las factories son singleton y devuelven un objeto que contiene las variables del servicio.
+  - Las factorias son singleton y devuelven un objeto que contiene las variables del servicio.
 
     Nota: [Todos los servicios Angular son singletons](https://docs.angularjs.org/guide/services).
 
