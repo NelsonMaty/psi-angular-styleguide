@@ -1818,11 +1818,10 @@ Usa Plantillas o snippets para ayudarte a seguir estilos consistentes o patrones
     ngfilter // creates an Angular filter
     ```
 
-
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Ruteo
-Enrutamiento del lado del Cliente es importante para crear un flujo de navegación entre vistas y vistas de composición que están hechas de muchas pequeñas plantillas y directivas.
+El enrutamiento del lado del cliente es importante para crear un flujo de navegación entre las diferentes vistas.
 
 ###### [Style [Y270](#style-y270)]
 
@@ -1834,7 +1833,7 @@ Enrutamiento del lado del Cliente es importante para crear un flujo de navegaci�
 
 ###### [Style [Y271](#style-y271)]
 
-  - Define rutas para vistas en el módulo dónde éstas existen. Cada módulo debería contener las rutas para las vistas en ese módulo.
+  - Define rutas para vistas en el módulo dónde existen. Cada módulo debería contener las rutas para las vistas en ese módulo.
 
     *¿Por qué?*: Cada módulo debe ser capaz de funcionar por sí mismo.
 
