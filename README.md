@@ -1252,7 +1252,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
 ## Anotación manual para la inyección de dependencias
 
-### Insegura después de la minificación
+### Minificación
 ###### [Style [Y090](#style-y090)]
 
   - Evita usar la sintaxis acortada para declarar dependencias sin usar algún método que permita minificación.
@@ -1276,12 +1276,12 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     angular.module('app').controller('Dashboard', d);function d(a, b) { }
     ```
 
-### Identifica dependencias manualmente
+### Asignación manual de dependencias
 ###### [Style [Y091](#style-y091)]
 
-  - Usa `$inject` Para identificar manualmente las dependencias de tus componentes AngularJS.
+  - Usa `$inject` para asignar manualmente las dependencias de tus componentes AngularJS.
 
-    *¿Por qué?*: Esto salvaguarda tus dependencias de ser vulnerables de problemas a la hora de minimizar cuando los parámetros se acorten. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
+    *¿Por qué?*: Esto evita problemas a la hora de minimizar ya que los parámetros se acortan. Por ejemplo, `common` y `dataservice` se convertirán `a` o `b` y no serán encontradas por AngularJS.
 
     *¿Por qué?*: Evita crear dependencias en línea, ya que las listas largas pueden ser difícil de leer en el arreglo. También puede ser confuso que el arreglo sea una serie de cadenas mientras que el último componente es una función.
 
@@ -1345,8 +1345,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
         }
     }
     ```
-
-### Identifica Manualmente Dependencias del Route Resolver
+### Identifica manualmente dependencias del Route Resolver
 ###### [Style [Y092](#style-y092)]
 
   - Usa $inject para identificar manualmente las dependencias de tu route resolver para componentes de AngularJS.
