@@ -7,7 +7,6 @@
 
     EditController.$inject = ['ejemploFactory', '$state','$stateParams'];
 
-    /* @ngInject */
     function EditController(ejemploFactory, $state, $stateParams) {
 
         var vm = this;

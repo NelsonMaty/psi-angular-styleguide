@@ -7,7 +7,6 @@
 
     geoObjectFactory.$inject = [];
 
-    /* @ngInject */
     function geoObjectFactory() {
         var service = {
             function: getCountries

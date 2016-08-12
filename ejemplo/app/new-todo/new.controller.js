@@ -7,7 +7,6 @@
 
     NewController.$inject = ['ejemploFactory','$state'];
 
-    /* @ngInject */
     function NewController(ejemploFactory, $state) {
 
         var vm = this;

@@ -7,7 +7,6 @@
 
     ejemploFactory.$inject = [];
 
-    /* @ngInject */
     function ejemploFactory() {
 
         var todos = [];

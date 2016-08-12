@@ -25,7 +25,6 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Directivas](#directivas)
   1. [Resolviendo promesas en un controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación manual para la inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias)
-  1. [Minificación y anotación](#minificación-y-anotación)
   1. [Animaciones](#animaciones)
   1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
@@ -1345,123 +1344,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
         }
     }
     ```
-### Identifica manualmente dependencias del Route Resolver
-###### [Style [Y092](#style-y092)]
-
-  - Usa $inject para identificar manualmente las dependencias de tu route resolver para componentes de AngularJS.
-
-    *¿Por qué?*: Esta técnica separa la función anónima para el route resolver, haciendola más fácil de leer.
-
-    *¿Por qué?*: Una declaración `$inject` puede ser fácilmente preceder al route resolver para hacer cualquier minificación de dependencias segura.
-
-    ```javascript
-    /* recomendado */
-    function config($routeProvider) {
-        $routeProvider
-            .when('/avengers', {
-                templateUrl: 'avengers.html',
-                controller: 'Avengers',
-                controllerAs: 'vm',
-                resolve: {
-                    moviesPrepService: moviePrepService
-                }
-            });
-    }
-
-    moviePrepService.$inject = ['movieService'];
-    function moviePrepService(movieService) {
-        return movieService.getMovies();
-    }
-    ```
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Minificación y anotación
-
-### ng-annotate
-###### [Style [Y100](#style-y100)]
-
-  - Usa [ng-annotate](//github.com/olov/ng-annotate) para [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) y comenta funciones que necesiten inyección de dependencias automatizadas usando `/** @ngInject */`
-
-    *¿Por qué?*: Salvaguarda tu código de cualquier dependencia que pueda no estar usando prácticas de minificación segura.
-
-    *¿Por qué?*: [`ng-min`](https://github.com/btford/ngmin) está obsoleto
-
-    El siguiente código no está usando minificación de dependencias segura.
-
-    ```javascript
-    angular
-        .module('app')
-        .controller('Avengers', Avengers);
-
-    /* @ngInject */
-    function Avengers(storageService, avengerService) {
-        var vm = this;
-        vm.heroSearch = '';
-        vm.storeHero = storeHero;
-
-        function storeHero() {
-            var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
-        }
-    }
-    ```
-
-    Cuando el código de arriba es ejecutado a través de ng-annotate producirá la siguiente salida con la anotación `$inject` y será seguro para ser minificado.
-
-    ```javascript
-    angular
-        .module('app')
-        .controller('Avengers', Avengers);
-
-    /* @ngInject */
-    function Avengers(storageService, avengerService) {
-        var vm = this;
-        vm.heroSearch = '';
-        vm.storeHero = storeHero;
-
-        function storeHero() {
-            var hero = avengerService.find(vm.heroSearch);
-            storageService.save(hero.name, hero);
-        }
-    }
-
-    Avengers.$inject = ['storageService', 'avengerService'];
-    ```
-
-    Nota: Si `ng-annotate` detecta que la inyección ya ha sido hecha (e.g. `@ngInject` fué detectado), no duplicará el código de `$inject`.
-
-### Usa Gulp o Grunt para ng-annotate
-###### [Style [Y101](#style-y101)]
-
-  - Usa [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) o [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) en una tarea de construcción automática. Inyecta `/* @ngInject */` antes de cualquier función que tenga dependecias.
-
-    *¿Por qué?*: ng-annotate atrapará la mayoría de las dependencias, pero algunas veces requiere indicios usando la sintaxis `/* @ngInject */`.
-
-    El código siguiente es un ejemplo de una tarea de Gulp que usa
-    ngAnnotate
-
-    ```javascript
-    gulp.task('js', ['jshint'], function() {
-        var source = pkg.paths.js;
-        return gulp.src(source)
-            .pipe(sourcemaps.init())
-            .pipe(concat('all.min.js', {newLine: ';'}))
-            // Agrega la notación antes de ofuscar para que el código sea minificicado apropiadamente.
-            .pipe(ngAnnotate({
-                // true ayuda a añadir @ngInject donde no es usado. Infiere.
-                // No funciona con resolve, así que tenemos que ser explícitos en ese caso
-                add: true
-            }))
-            .pipe(bytediff.start())
-            .pipe(uglify({mangle: true}))
-            .pipe(bytediff.stop())
-            .pipe(sourcemaps.write('./'))
-            .pipe(gulp.dest(pkg.paths.dev));
-    });
-
-    ```
-
 **[Volver arriba](#tabla-de-contenidos)**
 
 ## Animaciones
@@ -1478,7 +1360,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Sub segundos
 ###### [Style [Y211](#style-y211)]
 
-  - Usa duraciones cortas para las animaciones. Yo generalmente empiezo con 300ms y ajusto hasta que es apropiado.
+  - Usa duraciones cortas para las animaciones. Generalmente empezar con 300ms y ajustarlo hasta que sea apropiado.
 
     *¿Por qué?*: Animaciones largas pueden tener el efecto contrario en la Experiencia de Usuario y el rendimiento percibido al dar la apariencia de una aplicación lenta.
 
@@ -1493,7 +1375,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: animate.css está ampliamente usado y testeado.
 
-    Nota: Ve este [ excelente post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
+    Nota: Ve este [ post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
 
 **[Volver arriba](#tabla-de-contenidos)**
 

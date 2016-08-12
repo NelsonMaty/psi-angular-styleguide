@@ -6,7 +6,6 @@
 
     ViewController.$inject = ['ejemploFactory', '$state'];
 
-    /* @ngInject */
     function ViewController(ejemploFactory, $state) {
         var vm = this;
 
