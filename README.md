@@ -26,11 +26,11 @@ Esta guía viene acompañada de un proyecto de ejemplo que sigue los estilos y p
   1. [Resolviendo promesas en un controlador](#resolviendo-promesas-en-un-controlador)
   1. [Anotación manual para la inyección de dependencias](#anotación-manual-para-la-inyección-de-dependencias)
   1. [Animaciones](#animaciones)
-  1. [Comentarios](#comentarios)
   1. [JSHint](#js-hint)
   1. [Constantes](#constantes)
   1. [Plantillas y snippets](#plantillas-y-snippets)
   1. [Ruteo](#ruteo)
+  1. [Comentarios](#comentarios)
   1. [Angular Docs](#angular-docs)
 
 
@@ -1351,7 +1351,7 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 ### Uso
 ###### [Style [Y210](#style-y210)]
 
-  - Usa sutiles [animaciones con AngularJS](https://docs.angularjs.org/guide/animations) para hacer transiciones entre estados en vistas y elementos visuales primarios. Incluye el [módulo ngAnimate](https://docs.angularjs.org/api/ngAnimate). Las 3 claves son sutil, fluido, transparente.
+  - Usa sutiles [animaciones con AngularJS](https://docs.angularjs.org/guide/animations) para hacer transiciones entre estados en vistas y los principales componentes visuales. Incluye el [módulo ngAnimate](https://docs.angularjs.org/api/ngAnimate). Las 3 claves son sutil, fluido, transparente.
 
     *¿Por qué?*: Animaciones sutiles pueden mejorar la Experiencia de Usuario cuando son usadas apropiadamente.
 
@@ -1374,60 +1374,6 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
     *¿Por qué?*: Provee consistencia en tus animaciones.
 
     *¿Por qué?*: animate.css está ampliamente usado y testeado.
-
-    Nota: Ve este [ post de Matias Niemelä sobre animaciones AngularJS](http://www.yearofmoo.com/2013/08/remastered-animation-in-angularjs-1-2.html)
-
-**[Volver arriba](#tabla-de-contenidos)**
-
-## Comentarios
-
-### jsDoc
-###### [Style [Y220](#style-y220)]
-
-  - Si planeas producir documentación, usa la sintaxis [`jsDoc`](http://usejsdoc.org/) para documentar nombres de funciones, descripción, parámetros y devoluciones. Usa `@namespace` y `@memberOf` para igualar la estructura de tu aplicación.
-
-    *¿Por qué?*: Puedes generar (y regenerar) documentación desde tu código, en lugar de escribirla desde cero.
-
-    *¿Por qué?*: Provee consistencia al usar una herramienta industrial común.
-
-    ```javascript
-    /**
-     * Logger Factory
-     * @namespace Factories
-     */
-    (function() {
-      angular
-          .module('app')
-          .factory('logger', logger);
-
-      /**
-       * @namespace Logger
-       * @desc Application wide logger
-       * @memberOf Factories
-       */
-      function logger($log) {
-          var service = {
-             logError: logError
-          };
-          return service;
-
-          ////////////
-
-          /**
-           * @name logError
-           * @desc Logs errors
-           * @param {String} msg Message to log
-           * @returns {String}
-           * @memberOf Factories.Logger
-           */
-          function logError(msg) {
-              var loggedMsg = 'Error: ' + msg;
-              $log.error(loggedMsg);
-              return loggedMsg;
-          };
-      }
-    })();
-    ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
@@ -1603,6 +1549,58 @@ El enrutamiento del lado del cliente es importante para crear un flujo de navega
     *¿Por qué?*: Al remover un módulo o al agregar un módulo, la aplicación solo contendrá rutas que apunten a las vistas existentes.
 
     *¿Por qué?*: Esto hace más fácil habilitar o deshabilitar porciones de una aplicación sin preocuparse de rutas huérfanas.
+
+**[Volver arriba](#tabla-de-contenidos)**
+
+## Comentarios
+
+### jsDoc
+###### [Style [Y220](#style-y220)]
+
+  - Si planeas producir documentación, usa la sintaxis [`jsDoc`](http://usejsdoc.org/) para documentar nombres de funciones, descripción, parámetros y devoluciones. Usa `@namespace` y `@memberOf` para igualar la estructura de tu aplicación.
+
+    *¿Por qué?*: Puedes generar (y regenerar) documentación desde tu código, en lugar de escribirla desde cero.
+
+    *¿Por qué?*: Provee consistencia al usar una herramienta industrial común.
+
+    ```javascript
+    /**
+     * Logger Factory
+     * @namespace Factories
+     */
+    (function() {
+      angular
+          .module('app')
+          .factory('logger', logger);
+
+      /**
+       * @namespace Logger
+       * @desc Application wide logger
+       * @memberOf Factories
+       */
+      function logger($log) {
+          var service = {
+             logError: logError
+          };
+          return service;
+
+          ////////////
+
+          /**
+           * @name logError
+           * @desc Logs errors
+           * @param {String} msg Message to log
+           * @returns {String}
+           * @memberOf Factories.Logger
+           */
+          function logError(msg) {
+              var loggedMsg = 'Error: ' + msg;
+              $log.error(loggedMsg);
+              return loggedMsg;
+          };
+      }
+    })();
+    ```
 
 **[Volver arriba](#tabla-de-contenidos)**
 
