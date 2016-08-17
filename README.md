@@ -1375,12 +1375,17 @@ Usa [Gulp](http://gulpjs.com) o [Grunt](http://gruntjs.com) para crear tareas au
 
     *¿Por qué?*: animate.css está ampliamente usado y testeado.
 
-    Para instalar via Bower:
+    Instalación via Bower:
     ```javascript
       $ bower install animate.css --save
     ```
-
-    Para utilizarlo no olvidar colocar siempre la clase animated a parte de los estilos que se quieran aplicar
+    Agregar el enlace en la cabecera del documento
+    ```html
+    <head>
+      <link rel="stylesheet" href="animate.min.css">
+    </head>
+    ```
+    Para utilizarlo no olvidar colocar siempre la clase `animated` además de las animaciones que se quieran aplicar.
     ```html
     <h1 class="animated infinite bounce">Example</h1>
     ```
