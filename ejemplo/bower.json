@@ -24,6 +24,6 @@
     "angular": "^1.5.3",
     "angular-ui-router": "^0.2.18",
     "angular-material": "^1.0.7",
-    "animate.css": "^3.5.1"
+    "animate.css": "^3.5.2"
   }
 }
