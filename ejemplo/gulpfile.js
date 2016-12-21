@@ -8,6 +8,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var rename = require("gulp-rename");
 var os = require('os');
 var open = require('gulp-open');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('connect', function() {
   connect.server({
@@ -72,6 +73,7 @@ gulp.task('compress-js', function() {
 gulp.task('compress-css', function() {
     return gulp.src('dist/css/angularProject.css')
         .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(autoprefixer())
         .pipe(rename("angularProject.min.css"))
         .pipe(gulp.dest('dist/css'))
         .pipe(connect.reload());
